@@ -1,0 +1,27 @@
+# ==========================================
+# SIC-IOT openHAB Project Gitignore
+# ==========================================
+
+# File biến môi trường & thông tin nhạy cảm
+.env
+*.env
+*.key
+*.pem
+
+# File tạm openHAB & backup
+*.bak
+*.tmp
+openhab/userdata/
+openhab/logs/
+
+# IDEs & Editors (VS Code, Eclipse, IntelliJ)
+.vscode/
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# OS Specific Files
+.DS_Store
+Thumbs.db
+ehthumbs.db

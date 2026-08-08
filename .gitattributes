@@ -1,0 +1,35 @@
+# ===================================================================
+# QUY ĐỊNH KÝ TỰ XUỐNG DÒNG (LINE ENDINGS) CHO LINUX & WINDOWS
+# Giúp đồng bộ giữa thành viên dùng Linux (LF) và Windows (CRLF)
+# Tránh bị lỗi diff toàn bộ file do ký tự ^M trong Git
+# ===================================================================
+
+# Tự động nhận diện file văn bản và chuẩn hóa về LF trong Git Repository
+* text=auto eol=lf
+
+# Ép buộc xuống dòng dạng LF cho tất cả file mã nguồn & tài liệu
+*.md text eol=lf
+*.txt text eol=lf
+*.json text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.sh text eol=lf
+*.ino text eol=lf
+*.c text eol=lf
+*.h text eol=lf
+*.cpp text eol=lf
+*.py text eol=lf
+
+# openHAB configuration files
+*.items text eol=lf
+*.things text eol=lf
+*.rules text eol=lf
+*.sitemap text eol=lf
+*.persist text eol=lf
+
+# File nhị phân (hình ảnh, tài liệu nén) giữ nguyên
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
