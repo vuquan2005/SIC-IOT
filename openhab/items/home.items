@@ -1,0 +1,19 @@
+// ====================================================================
+// OpenHAB Items Configuration for Smart Home & ESP32 Node
+// ====================================================================
+
+// --- Cảm biến (Sensors) ---
+Number Cam_Bien_Anh_Sang       "Cảm biến ánh sáng"           <sun>           { channel="mqtt:topic:c9ec6b11f9:965707a924:light_sensor" }
+Switch Cam_Bien_CHuyen_Dong   "Cảm biến chuyển động"        <motion>        { channel="mqtt:topic:c9ec6b11f9:965707a924:pir_sensor" }
+Number Cam_Bien_Khoang_Cach    "Cảm biến khoảng cách"        <flow>          { channel="mqtt:topic:c9ec6b11f9:965707a924:distance_sensor" }
+Number Do_Am                   "Độ ẩm [%.1f %%]"             <humidity>      ["Point"] { channel="mqtt:topic:c9ec6b11f9:965707a924:humidity" }
+Number Nhiet_Do                "Nhiệt độ [%.1f °C]"          <temperature>   ["Point"] { channel="mqtt:topic:c9ec6b11f9:965707a924:temperature" }
+
+// --- Thiết bị điều khiển (Actuators) ---
+Dimmer ESP32_Den_LED           "Đèn phòng khách"             <light>         ["Control"] { channel="mqtt:topic:c9ec6b11f9:965707a924:relay_light" }
+Dimmer ESP32_Den_LED_phong_ngu "Đèn phòng ngủ"               <light>         ["Control"] { channel="mqtt:topic:c9ec6b11f9:965707a924:led_bedroom" }
+Switch ESP32_Cua_Tu_Dong       "Cửa tự động"                 <door>          ["Power", "Switch"] { channel="mqtt:topic:c9ec6b11f9:965707a924:door" }
+Switch ESP32_Binh_nong_lanh    "Bình nóng lạnh"              <heating>       ["Power", "Switch"] { channel="mqtt:topic:c9ec6b11f9:965707a924:heater" }
+
+// --- Biến cờ Logic (Virtual / Logic Flags) ---
+Switch Flag_Khong_Bat_Binh     "Cờ hủy bật bình nóng lạnh"   <switch>

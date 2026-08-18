@@ -1,0 +1,191 @@
+{
+  "overview": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "overview",
+      "tags": [],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "timestamp": "Aug 13, 2026, 7:59:51 PM",
+      "component": "oh-layout-page",
+      "config": {
+        "label": "Overview"
+      },
+      "slots": {
+        "default": [
+          {
+            "component": "oh-block",
+            "config": {
+              "title": "🛋️ Phòng Khách"
+            },
+            "slots": {
+              "default": [
+                {
+                  "component": "oh-grid-cells",
+                  "config": {},
+                  "slots": {
+                    "default": [
+                      {
+                        "component": "oh-cell",
+                        "config": {
+                          "header": "\u003ditems.Nhiet_Do.state",
+                          "icon": "f7:thermometer_sun",
+                          "title": "Nhiệt độ",
+                          "trendItem": "Nhiet_Do"
+                        }
+                      },
+                      {
+                        "component": "oh-cell",
+                        "config": {
+                          "header": "\u003ditems.Do_Am.state",
+                          "icon": "f7:drop_fill",
+                          "title": "Độ ẩm",
+                          "trendItem": "Do_Am"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "component": "oh-list-card",
+                  "config": {
+                    "title": "Thiết bị ánh sáng"
+                  },
+                  "slots": {
+                    "default": [
+                      {
+                        "component": "oh-toggle-item",
+                        "config": {
+                          "icon": "f7:lightbulb",
+                          "iconColor": "red",
+                          "item": "ESP32_Den_LED",
+                          "title": "Đèn phòng khách"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "component": "oh-slider-card",
+                  "config": {
+                    "item": "ESP32_Den_LED",
+                    "label": true,
+                    "max": 100.0,
+                    "min": 0.0,
+                    "scale": true,
+                    "step": 5.0,
+                    "title": "Điều khiển độ sáng đèn phòng khách"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "component": "oh-block",
+            "config": {
+              "title": "🛏️ Phòng Ngủ"
+            },
+            "slots": {
+              "default": [
+                {
+                  "component": "oh-list-card",
+                  "config": {
+                    "title": "Thiết bị ánh sáng"
+                  },
+                  "slots": {
+                    "default": [
+                      {
+                        "component": "oh-toggle-item",
+                        "config": {
+                          "icon": "f7:lightbulb",
+                          "iconColor": "blue",
+                          "item": "ESP32_Den_LED_phong_ngu",
+                          "title": "Đèn phòng ngủ"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "component": "oh-slider-card",
+                  "config": {
+                    "item": "ESP32_Den_LED_phong_ngu",
+                    "label": true,
+                    "max": 100.0,
+                    "min": 0.0,
+                    "scale": true,
+                    "step": 5.0,
+                    "title": "Điều khiển độ sáng đèn phòng ngủ"
+                  }
+                },
+                {
+                  "component": "oh-grid-cells",
+                  "config": {},
+                  "slots": {
+                    "default": [
+                      {
+                        "component": "oh-cell",
+                        "config": {
+                          "action": [
+                            "toggle"
+                          ],
+                          "actionCommand": "ON",
+                          "actionCommandAlt": "OFF",
+                          "color": "\u003d(items.ESP32_Cua_Tu_Dong.state \u003d\u003d \"OPEN\") ? \"green\" : \"gray\"",
+                          "icon": "\u003d(items.ESP32_Cua_Tu_Dong.state \u003d\u003d \"OPEN\") ? \"f7:door_open_fill\" : \"f7:door_closed_fill\"",
+                          "subtitle": "\u003ditems.ESP32_Cua_Tu_Dong.state \u003d\u003d \u0027ON\u0027 ? \u0027ĐANG MỞ\u0027 : \u0027ĐANG ĐÓNG\u0027",
+                          "title": "Cửa tự động phòng ngủ ",
+                          "trendItem": "ESP32_Cua_Tu_Dong"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "component": "oh-block",
+            "config": {
+              "title": "🚽 Nhà Vệ Sinh"
+            },
+            "slots": {
+              "default": [
+                {
+                  "component": "oh-cell",
+                  "config": {
+                    "icon": "f7:square_favorites_alt",
+                    "subtitle": "Đang chờ bổ sung thiết bị",
+                    "title": "Khu vực Nhà Vệ Sinh"
+                  }
+                },
+                {
+                  "component": "oh-grid-cells",
+                  "config": {},
+                  "slots": {
+                    "default": [
+                      {
+                        "component": "oh-cell",
+                        "config": {
+                          "action": [
+                            "toggle"
+                          ],
+                          "color": "\u003ditems.ESP32_Binh_nong_lanh.state \u003d\u003d \u0027ON\u0027 ? \u0027orange\u0027 : \u0027gray\u0027",
+                          "subtitle": "\u003ditems.ESP32_Binh_nong_lanh.state \u003d\u003d \u0027ON\u0027 ? \u0027ĐANG BẬT\u0027 : \u0027ĐANG TẮT\u0027",
+                          "title": "Bình nóng lạnh",
+                          "trendItem": "ESP32_Binh_nong_lanh"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "Cam_Bien_Anh_Sang -\u003e mqtt:topic:c9ec6b11f9:965707a924:light_sensor": {
+    "class": "org.openhab.core.thing.link.ItemChannelLink",
+    "value": {
+      "channelUID": {
+        "segments": [
+          "mqtt",
+          "topic",
+          "c9ec6b11f9",
+          "965707a924",
+          "light_sensor"
+        ],
+        "uid": "mqtt:topic:c9ec6b11f9:965707a924:light_sensor"
+      },
+      "configuration": {
+        "properties": {}
+      },
+      "itemName": "Cam_Bien_Anh_Sang"
+    }
+  },
+  "Cam_Bien_CHuyen_Dong -\u003e mqtt:topic:c9ec6b11f9:965707a924:pir_sensor": {
+    "class": "org.openhab.core.thing.link.ItemChannelLink",
+    "value": {
+      "channelUID": {
+        "segments": [
+          "mqtt",
+          "topic",
+          "c9ec6b11f9",
+          "965707a924",
+          "pir_sensor"
+        ],
+        "uid": "mqtt:topic:c9ec6b11f9:965707a924:pir_sensor"
+      },
+      "configuration": {
+        "properties": {}
+      },
+      "itemName": "Cam_Bien_CHuyen_Dong"
+    }
+  },
+  "Cam_Bien_Khoang_Cach -\u003e mqtt:topic:c9ec6b11f9:965707a924:distance_sensor": {
+    "class": "org.openhab.core.thing.link.ItemChannelLink",
+    "value": {
+      "channelUID": {
+        "segments": [
+          "mqtt",
+          "topic",
+          "c9ec6b11f9",
+          "965707a924",
+          "distance_sensor"
+        ],
+        "uid": "mqtt:topic:c9ec6b11f9:965707a924:distance_sensor"
+      },
+      "configuration": {
+        "properties": {}
+      },
+      "itemName": "Cam_Bien_Khoang_Cach"
+    }
+  },
+  "Cua_Nha -\u003e mqtt:topic:c9ec6b11f9:965707a924:Cua_Nha": {
+    "class": "org.openhab.core.thing.link.ItemChannelLink",
+    "value": {
+      "channelUID": {
+        "segments": [
+          "mqtt",
+          "topic",
+          "c9ec6b11f9",
+          "965707a924",
+          "Cua_Nha"
+        ],
+        "uid": "mqtt:topic:c9ec6b11f9:965707a924:Cua_Nha"
+      },
+      "configuration": {
+        "properties": {}
+      },
+      "itemName": "Cua_Nha"
+    }
+  },
+  "Do_Am -\u003e mqtt:topic:c9ec6b11f9:965707a924:humidity": {
+    "class": "org.openhab.core.thing.link.ItemChannelLink",
+    "value": {
+      "channelUID": {
+        "segments": [
+          "mqtt",
+          "topic",
+          "c9ec6b11f9",
+          "965707a924",
+          "humidity"
+        ],
+        "uid": "mqtt:topic:c9ec6b11f9:965707a924:humidity"
+      },
+      "configuration": {
+        "properties": {}
+      },
+      "itemName": "Do_Am"
+    }
+  },
+  "ESP32_Binh_nong_lanh -\u003e mqtt:topic:c9ec6b11f9:965707a924:heater": {
+    "class": "org.openhab.core.thing.link.ItemChannelLink",
+    "value": {
+      "channelUID": {
+        "segments": [
+          "mqtt",
+          "topic",
+          "c9ec6b11f9",
+          "965707a924",
+          "heater"
+        ],
+        "uid": "mqtt:topic:c9ec6b11f9:965707a924:heater"
+      },
+      "configuration": {
+        "properties": {}
+      },
+      "itemName": "ESP32_Binh_nong_lanh"
+    }
+  },
+  "ESP32_Cua_Tu_Dong -\u003e mqtt:topic:c9ec6b11f9:965707a924:door": {
+    "class": "org.openhab.core.thing.link.ItemChannelLink",
+    "value": {
+      "channelUID": {
+        "segments": [
+          "mqtt",
+          "topic",
+          "c9ec6b11f9",
+          "965707a924",
+          "door"
+        ],
+        "uid": "mqtt:topic:c9ec6b11f9:965707a924:door"
+      },
+      "configuration": {
+        "properties": {}
+      },
+      "itemName": "ESP32_Cua_Tu_Dong"
+    }
+  },
+  "ESP32_Den_LED -\u003e mqtt:topic:c9ec6b11f9:965707a924:relay_light": {
+    "class": "org.openhab.core.thing.link.ItemChannelLink",
+    "value": {
+      "channelUID": {
+        "segments": [
+          "mqtt",
+          "topic",
+          "c9ec6b11f9",
+          "965707a924",
+          "relay_light"
+        ],
+        "uid": "mqtt:topic:c9ec6b11f9:965707a924:relay_light"
+      },
+      "configuration": {
+        "properties": {}
+      },
+      "itemName": "ESP32_Den_LED"
+    }
+  },
+  "ESP32_Den_LED_phong_ngu -\u003e mqtt:topic:c9ec6b11f9:965707a924:led_bedroom": {
+    "class": "org.openhab.core.thing.link.ItemChannelLink",
+    "value": {
+      "channelUID": {
+        "segments": [
+          "mqtt",
+          "topic",
+          "c9ec6b11f9",
+          "965707a924",
+          "led_bedroom"
+        ],
+        "uid": "mqtt:topic:c9ec6b11f9:965707a924:led_bedroom"
+      },
+      "configuration": {
+        "properties": {}
+      },
+      "itemName": "ESP32_Den_LED_phong_ngu"
+    }
+  },
+  "Nhiet_Do -\u003e mqtt:topic:c9ec6b11f9:965707a924:temperature": {
+    "class": "org.openhab.core.thing.link.ItemChannelLink",
+    "value": {
+      "channelUID": {
+        "segments": [
+          "mqtt",
+          "topic",
+          "c9ec6b11f9",
+          "965707a924",
+          "temperature"
+        ],
+        "uid": "mqtt:topic:c9ec6b11f9:965707a924:temperature"
+      },
+      "configuration": {
+        "properties": {}
+      },
+      "itemName": "Nhiet_Do"
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "Cam_Bien_Anh_Sang": {
+    "class": "org.openhab.core.items.ManagedItemProvider$PersistedItem",
+    "value": {
+      "groupNames": [],
+      "itemType": "Number",
+      "tags": [],
+      "label": "Cảm biến ánh sáng",
+      "category": ""
+    }
+  },
+  "Cam_Bien_CHuyen_Dong": {
+    "class": "org.openhab.core.items.ManagedItemProvider$PersistedItem",
+    "value": {
+      "groupNames": [],
+      "itemType": "Switch",
+      "tags": [],
+      "label": "Cảm biến chuyển động",
+      "category": ""
+    }
+  },
+  "Cam_Bien_Khoang_Cach": {
+    "class": "org.openhab.core.items.ManagedItemProvider$PersistedItem",
+    "value": {
+      "groupNames": [],
+      "itemType": "Number",
+      "tags": [],
+      "label": "Cảm biến khoảng cách",
+      "category": ""
+    }
+  },
+  "Do_Am": {
+    "class": "org.openhab.core.items.ManagedItemProvider$PersistedItem",
+    "value": {
+      "groupNames": [],
+      "itemType": "Number",
+      "tags": [
+        "Point"
+      ],
+      "label": "Độ ẩm [%.1f %%]",
+      "category": ""
+    }
+  },
+  "ESP32_Binh_nong_lanh": {
+    "class": "org.openhab.core.items.ManagedItemProvider$PersistedItem",
+    "value": {
+      "groupNames": [],
+      "itemType": "Switch",
+      "tags": [
+        "Power",
+        "Switch"
+      ],
+      "label": "Bình nóng lạnh",
+      "category": ""
+    }
+  },
+  "ESP32_Cua_Tu_Dong": {
+    "class": "org.openhab.core.items.ManagedItemProvider$PersistedItem",
+    "value": {
+      "groupNames": [],
+      "itemType": "Switch",
+      "tags": [
+        "Power",
+        "Switch"
+      ],
+      "label": "Cửa tự động",
+      "category": ""
+    }
+  },
+  "ESP32_Den_LED": {
+    "class": "org.openhab.core.items.ManagedItemProvider$PersistedItem",
+    "value": {
+      "groupNames": [],
+      "itemType": "Dimmer",
+      "tags": [
+        "Control"
+      ],
+      "label": "Đèn phòng khách",
+      "category": ""
+    }
+  },
+  "ESP32_Den_LED_phong_ngu": {
+    "class": "org.openhab.core.items.ManagedItemProvider$PersistedItem",
+    "value": {
+      "groupNames": [],
+      "itemType": "Dimmer",
+      "tags": [
+        "Control"
+      ],
+      "label": "Đèn phòng ngủ",
+      "category": ""
+    }
+  },
+  "Flag_Khong_Bat_Binh": {
+    "class": "org.openhab.core.items.ManagedItemProvider$PersistedItem",
+    "value": {
+      "groupNames": [],
+      "itemType": "Switch",
+      "tags": [],
+      "label": "Cờ hủy bật bình nóng lạnh",
+      "category": ""
+    }
+  },
+  "Nhiet_Do": {
+    "class": "org.openhab.core.items.ManagedItemProvider$PersistedItem",
+    "value": {
+      "groupNames": [],
+      "itemType": "Number",
+      "tags": [
+        "Point"
+      ],
+      "label": "Nhiệt độ [%.1f °C]",
+      "category": ""
+    }
+  }
+}

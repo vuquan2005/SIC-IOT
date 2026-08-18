@@ -1,0 +1,115 @@
+{
+  "inmemory": {
+    "class": "org.openhab.core.persistence.dto.PersistenceServiceConfigurationDTO",
+    "value": {
+      "serviceId": "inmemory",
+      "configs": [
+        {
+          "items": [
+            "*"
+          ],
+          "strategies": [
+            "forecast"
+          ],
+          "filters": []
+        }
+      ],
+      "aliases": {},
+      "cronStrategies": [
+        {
+          "cronExpression": "0 * * ? * *",
+          "name": "everyMinute"
+        },
+        {
+          "cronExpression": "0 0 * * * ?",
+          "name": "everyHour"
+        },
+        {
+          "cronExpression": "0 0 0 * * ?",
+          "name": "everyDay"
+        }
+      ],
+      "thresholdFilters": [],
+      "timeFilters": [],
+      "equalsFilters": [],
+      "includeFilters": [],
+      "editable": false
+    }
+  },
+  "mapdb": {
+    "class": "org.openhab.core.persistence.dto.PersistenceServiceConfigurationDTO",
+    "value": {
+      "serviceId": "mapdb",
+      "configs": [
+        {
+          "items": [
+            "*"
+          ],
+          "strategies": [
+            "restoreOnStartup",
+            "everyChange"
+          ],
+          "filters": []
+        }
+      ],
+      "aliases": {},
+      "cronStrategies": [
+        {
+          "cronExpression": "0 * * ? * *",
+          "name": "everyMinute"
+        },
+        {
+          "cronExpression": "0 0 * * * ?",
+          "name": "everyHour"
+        },
+        {
+          "cronExpression": "0 0 0 * * ?",
+          "name": "everyDay"
+        }
+      ],
+      "thresholdFilters": [],
+      "timeFilters": [],
+      "equalsFilters": [],
+      "includeFilters": [],
+      "editable": false
+    }
+  },
+  "rrd4j": {
+    "class": "org.openhab.core.persistence.dto.PersistenceServiceConfigurationDTO",
+    "value": {
+      "serviceId": "rrd4j",
+      "configs": [
+        {
+          "items": [
+            "*"
+          ],
+          "strategies": [
+            "everyChange",
+            "everyMinute"
+          ],
+          "filters": []
+        }
+      ],
+      "aliases": {},
+      "cronStrategies": [
+        {
+          "cronExpression": "0 * * ? * *",
+          "name": "everyMinute"
+        },
+        {
+          "cronExpression": "0 0 * * * ?",
+          "name": "everyHour"
+        },
+        {
+          "cronExpression": "0 0 0 * * ?",
+          "name": "everyDay"
+        }
+      ],
+      "thresholdFilters": [],
+      "timeFilters": [],
+      "equalsFilters": [],
+      "includeFilters": [],
+      "editable": false
+    }
+  }
+}

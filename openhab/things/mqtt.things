@@ -1,0 +1,70 @@
+// ====================================================================
+// MQTT Things Configuration for Smart Home & ESP32 Node
+// ====================================================================
+
+Bridge mqtt:broker:c9ec6b11f9 "MQTT Broker" [
+    host="127.0.0.1",
+    port=1883,
+    secure=false,
+    qos=0,
+    keepAlive=60,
+    reconnectTime=60000,
+    retain=true,
+    clientid="18f907f9-e765-4ae1-9791-f29574ba2eb8"
+] {
+    // Thiết bị ESP32 trung tâm điều khiển phòng
+    Thing topic 965707a924 "ESP32" {
+        Channels:
+            // --- CẢM BIẾN (State Topics) ---
+            Type number : temperature "Nhiệt độ" [
+                stateTopic="home/esp32/sensors",
+                transformationPattern="JSONPATH:$.temp"
+            ]
+            Type number : humidity "Độ ẩm" [
+                stateTopic="home/esp32/sensors",
+                transformationPattern="JSONPATH:$.humi"
+            ]
+            Type switch : pir_sensor "Cảm biến chuyển động" [
+                stateTopic="home/esp32/sensors",
+                transformationPattern="JSONPATH:$.pir"
+            ]
+            Type number : distance_sensor "Đo khoảng cách" [
+                stateTopic="home/esp32/sensors",
+                transformationPattern="JSONPATH:$.distance"
+            ]
+            Type number : light_sensor "Ánh sáng" [
+                stateTopic="home/esp32/sensors",
+                transformationPattern="JSONPATH:$.light"
+            ]
+
+            // --- CƠ CẤU CHẤP HÀNH (Command Topics) ---
+            Type dimmer : relay_light "Đèn LED" [
+                commandTopic="home/esp32/relay_light"
+            ]
+            Type dimmer : led_bedroom "Đèn LED phòng ngủ" [
+                commandTopic="home/esp32/relay_light_bedroom"
+            ]
+            Type switch : door "Cửa Tự Động" [
+                commandTopic="home/door",
+                on="OPEN",
+                off="CLOSE"
+            ]
+            Type switch : heater "Bình nóng lạnh" [
+                commandTopic="home/esp32/heater",
+                on="ON",
+                off="OFF"
+            ]
+    }
+
+    // Topic phụ kiểm tra nhiệt độ
+    Thing topic 2b75d6c987 "nhiet do" {
+        Channels:
+            Type number : nhiet_do "nhiet do" [
+                stateTopic="esp32/phongkhach/nhietdo"
+            ]
+    }
+}
+
+// Astro Things (Theo dõi chu kỳ mặt trời, mặt trăng tại vị trí địa lý)
+astro:sun:local "Local Sun" [ geolocation="21.053879,105.735820", interval=300, useMeteorologicalSeason=false ]
+astro:moon:local "Local Moon" [ interval=300 ]

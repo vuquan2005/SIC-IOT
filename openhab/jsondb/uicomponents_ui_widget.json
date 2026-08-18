@@ -1,0 +1,2157 @@
+{
+  "ClickableCameraImage": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "ClickableCameraImage",
+      "tags": [
+        "marketplace:110069"
+      ],
+      "props": {
+        "parameters": [
+          {
+            "description": "example: http://192.168.1.2:8080/ipcamera/uniqueID/autofps.mjpeg",
+            "label": "Thumbnail URL",
+            "name": "thumbnailURL",
+            "required": true,
+            "type": "TEXT"
+          },
+          {
+            "description": "example: http://192.168.1.2:8080/ipcamera/uniqueID/snapshots.mjpeg",
+            "label": "Stream URL",
+            "name": "streamURL",
+            "required": true,
+            "type": "TEXT"
+          },
+          {
+            "context": "item",
+            "label": "Select the Camera to Control",
+            "name": "camera",
+            "required": false,
+            "type": "TEXT"
+          },
+          {
+            "label": "Show Equipment Controls",
+            "name": "showSettings",
+            "required": true,
+            "type": "BOOLEAN"
+          },
+          {
+            "label": "Show Audio Alarms",
+            "name": "showAudioAlarms",
+            "required": true,
+            "type": "BOOLEAN"
+          },
+          {
+            "label": "Show Motion Alarms",
+            "name": "showMotionAlarms",
+            "required": true,
+            "type": "BOOLEAN"
+          },
+          {
+            "context": "item",
+            "label": "Item to Switch",
+            "name": "switchItem",
+            "required": false,
+            "type": "TEXT"
+          }
+        ]
+      },
+      "component": "f7-card",
+      "config": {
+        "style": {
+          "--f7-card-margin-horizontal": "0px",
+          "height": "9rem",
+          "width": "16rem"
+        }
+      },
+      "slots": {
+        "default": [
+          {
+            "component": "oh-image-card",
+            "config": {
+              "action": "photos",
+              "actionPhotoBrowserConfig": {
+                "lazy": true,
+                "theme": "dark",
+                "type": "popup"
+              },
+              "actionPhotos": "\u003d[props.streamURL]",
+              "lazy": true,
+              "style": {
+                "border-radius": "6px",
+                "height": "9rem",
+                "margin": "0px",
+                "width": "100%"
+              },
+              "url": "\u003dprops.thumbnailURL"
+            }
+          },
+          {
+            "component": "f7-card-content"
+          },
+          {
+            "component": "oh-link",
+            "config": {
+              "action": "toggle",
+              "actionCommand": true,
+              "actionCommandAlt": false,
+              "actionItem": "\u003dprops.switchItem",
+              "iconF7": "power",
+              "iconSize": 25,
+              "style": {
+                "color": "\u003d(items[props.switchItem].state \u003d\u003d\u003d \u0027ON\u0027) ? \u0027cyan\u0027 : \u0027white\u0027",
+                "left": "0.2rem",
+                "opacity": "\u003d(items[props.switchItem].state \u003d\u003d\u003d \u0027ON\u0027) ? \u00270.4\u0027 : \u00270.3\u0027",
+                "position": "absolute",
+                "top": "0rem"
+              },
+              "visible": "\u003dprops.switchItem !\u003d\u003d undefined"
+            }
+          },
+          {
+            "component": "oh-link",
+            "config": {
+              "action": "group",
+              "actionGroupPopupItem": "\u003dprops.camera",
+              "iconF7": "gear_alt",
+              "iconSize": 25,
+              "style": {
+                "color": "white",
+                "opacity": 0.4,
+                "position": "absolute",
+                "right": "0.2rem",
+                "top": "0rem"
+              },
+              "visible": "\u003dprops.showSettings \u003d\u003d\u003d true"
+            }
+          },
+          {
+            "component": "oh-link",
+            "config": {
+              "iconF7": "eye",
+              "iconSize": 18,
+              "style": {
+                "color": "white",
+                "opacity": "\u003d(props.showMotionAlarms !\u003d\u003d true) ? \"0\" : (items[props.camera + \"_Motion_Alarm\"].state \u003d\u003d\u003d \"ON\") ? \"0.5\" : \"0\" ",
+                "position": "absolute",
+                "right": "0.2rem",
+                "top": "7.8rem"
+              },
+              "visible": "\u003dprops.showMotionAlarms \u003d\u003d\u003d true"
+            }
+          },
+          {
+            "component": "oh-link",
+            "config": {
+              "iconF7": "ear",
+              "iconSize": 18,
+              "style": {
+                "color": "white",
+                "left": "0rem",
+                "opacity": "\u003d(props.showAudioAlarms !\u003d\u003d true) ? \"0\" : (items[props.camera + \"_Audio_Alarm\"].state \u003d\u003d\u003d \"ON\") ? \"0.5\" : \"0\" ",
+                "position": "absolute",
+                "top": "7.7rem"
+              },
+              "visible": "\u003dprops.showAudioAlarms \u003d\u003d\u003d true"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "barometer_gauge": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "barometer_gauge",
+      "tags": [
+        "barometer",
+        "gauge",
+        "marketplace:161270",
+        "pressure"
+      ],
+      "props": {
+        "parameters": [
+          {
+            "description": "The title text",
+            "label": "Title",
+            "name": "title",
+            "required": false,
+            "type": "TEXT"
+          },
+          {
+            "context": "item",
+            "description": "The barometric pressure Item",
+            "label": "Barometric Pressure Item",
+            "name": "item",
+            "required": true,
+            "type": "TEXT"
+          },
+          {
+            "default": "mbar",
+            "label": "Primary Scale Unit",
+            "name": "primary",
+            "required": false,
+            "type": "TEXT",
+            "limitToOptions": true,
+            "options": [
+              {
+                "label": "inHg",
+                "value": "inhg"
+              },
+              {
+                "label": "mbar/hPa",
+                "value": "mbar"
+              }
+            ]
+          },
+          {
+            "default": "none",
+            "label": "Secondary Scale Unit",
+            "name": "secondary",
+            "required": false,
+            "type": "TEXT",
+            "limitToOptions": true,
+            "options": [
+              {
+                "label": "None",
+                "value": "none"
+              },
+              {
+                "label": "inHg",
+                "value": "inhg"
+              },
+              {
+                "label": "mbar/hPa",
+                "value": "mbar"
+              },
+              {
+                "label": "mmHg/Torr",
+                "value": "mmhg"
+              },
+              {
+                "label": "Pa",
+                "value": "pascal"
+              },
+              {
+                "label": "psi",
+                "value": "psi"
+              }
+            ]
+          },
+          {
+            "default": "false",
+            "description": "Enable the LCD",
+            "label": "Enable LCD",
+            "name": "enableLCD",
+            "required": false,
+            "type": "BOOLEAN"
+          },
+          {
+            "default": "#e64a19",
+            "description": "The needle color",
+            "label": "Needle Color",
+            "name": "needleColor",
+            "required": false,
+            "type": "TEXT"
+          },
+          {
+            "default": "#ddd",
+            "description": "The gauge frame color",
+            "label": "Frame Color",
+            "name": "frameColor",
+            "required": false,
+            "type": "TEXT"
+          },
+          {
+            "default": "transparent",
+            "description": "The dial color",
+            "label": "Dial Color",
+            "name": "dialColor",
+            "required": false,
+            "type": "TEXT"
+          },
+          {
+            "default": "#464646",
+            "description": "The dial print color",
+            "label": "Print Color",
+            "name": "printColor",
+            "required": false,
+            "type": "TEXT"
+          },
+          {
+            "default": "transparent",
+            "description": "The shadow color, e.g. \"black\" or \"#0008\"",
+            "label": "Shadow Color",
+            "name": "shadowColor",
+            "required": false,
+            "type": "TEXT",
+            "advanced": true
+          },
+          {
+            "default": "10",
+            "description": "The blur value for the dial shadow (no effect if the dial is transparent)",
+            "label": "Shadow Blur",
+            "name": "shadowBlur",
+            "required": false,
+            "type": "INTEGER",
+            "advanced": true
+          },
+          {
+            "default": "3",
+            "description": "The offset value for the dial shadow (no effect if the dial is transparent)",
+            "label": "Shadow Offset",
+            "name": "shadowOffset",
+            "required": false,
+            "type": "INTEGER",
+            "advanced": true
+          },
+          {
+            "default": "10",
+            "description": "The primary axis font size",
+            "label": "Primary Scale Font Size",
+            "name": "primaryFontSize",
+            "required": false,
+            "type": "INTEGER",
+            "min": 6,
+            "max": 50,
+            "advanced": true
+          },
+          {
+            "default": "10",
+            "description": "The secondary axis font size",
+            "label": "Secondary Scale Font Size",
+            "name": "secondaryFontSize",
+            "required": false,
+            "type": "INTEGER",
+            "min": 6,
+            "max": 50,
+            "advanced": true
+          },
+          {
+            "description": "The height of widget",
+            "label": "Height",
+            "name": "height",
+            "required": false,
+            "type": "TEXT"
+          }
+        ],
+        "parameterGroups": []
+      },
+      "timestamp": "Dec 31, 2024, 1:52:53 AM",
+      "component": "oh-chart",
+      "config": {
+        "height": "\u003dprops.height"
+      },
+      "slots": {
+        "series": [
+          {
+            "component": "oh-data-series",
+            "config": {
+              "emptyCircleStyle": {
+                "color": "\u003dprops.dialColor",
+                "shadowBlur": "\u003dprops.shadowBlur",
+                "shadowColor": "\u003dprops.shadowColor",
+                "shadowOffsetX": "\u003dprops.shadowOffset",
+                "shadowOffsetY": "\u003dprops.shadowOffset"
+              },
+              "id": "dial",
+              "radius": "85%",
+              "type": "pie"
+            }
+          },
+          {
+            "component": "oh-data-series",
+            "config": {
+              "anchor": {
+                "itemStyle": {
+                  "color": "#000"
+                },
+                "show": true,
+                "size": 14
+              },
+              "axisLabel": {
+                "show": false
+              },
+              "axisLine": {
+                "lineStyle": {
+                  "color": [
+                    [
+                      1,
+                      "\u003dprops.frameColor"
+                    ]
+                  ],
+                  "shadowBlur": 6,
+                  "shadowColor": "#0008",
+                  "width": 6
+                }
+              },
+              "axisTick": {
+                "show": false
+              },
+              "detail": {
+                "show": false
+              },
+              "endAngle": -270,
+              "pointer": {
+                "show": false
+              },
+              "radius": "85%",
+              "splitLine": {
+                "show": false
+              },
+              "startAngle": 90,
+              "title": {
+                "show": false
+              },
+              "type": "gauge"
+            }
+          },
+          {
+            "component": "oh-data-series",
+            "config": {
+              "anchor": {
+                "icon": "path://M 21.5,90 C 21.2,90 20.8,89.9 20.5,89.8 19.2,89.2 18.7,87.8 19.2,86.5 L 22.7,78.5 C 23.3,77.2 24.7,76.7 26,77.2 27.3,77.8 27.8,79.2 27.3,80.5 L 23.8,88.5 C 23.4,89.5 22.5,90 21.5,90 Z M 35.5,99 C 35.2,99 34.8,98.9 34.5,98.8 33.2,98.2 32.7,96.8 33.2,95.5 L 36.7,87.5 C 37.3,86.2 38.7,85.7 40,86.2 41.3,86.8 41.8,88.2 41.3,89.5 L 37.8,97.5 C 37.4,98.5 36.5,99 35.5,99 Z M 77.5,99 C 77.2,99 76.8,98.9 76.5,98.8 75.2,98.2 74.7,96.8 75.2,95.5 L 78.7,87.5 C 79.3,86.2 80.7,85.7 82,86.2 83.3,86.8 83.8,88.2 83.3,89.5 L 79.8,97.5 C 79.4,98.5 78.5,99 77.5,99 Z M 63.5,90 C 63.2,90 62.8,89.9 62.5,89.8 61.2,89.2 60.7,87.8 61.2,86.5 L 64.7,78.5 C 65.3,77.2 66.7,76.7 68,77.2 69.3,77.8 69.8,79.2 69.3,80.5 L 65.8,88.5 C 65.4,89.5 64.5,90 63.5,90 Z M 50.5,90 C 50.2,90 49.8,89.9 49.5,89.8 48.2,89.2 47.7,87.8 48.2,86.5 L 51.7,78.5 C 52.3,77.2 53.7,76.7 55,77.2 56.3,77.8 56.8,79.2 56.3,80.5 L 52.8,88.5 C 52.4,89.5 51.5,90 50.5,90 Z M 57.699219,21.5 C 48.440743,21.5 40.147523,26.568909 35.720703,34.470703 34.740953,34.203051 33.756475,33.900391 32.800781,33.900391 28.420493,33.900391 24.647047,36.370936 22.773437,40.054687 22.48915,40.04404 22.169674,40 21.900391,40 17.410147,40 13.200641,41.769453 10.121094,44.958984 7.1678467,48.021611 5.5,52.004482 5.5,56.199219 V 56.417969 56.4375 C 5.6087751,60.897281 7.374687,65.00355 10.5625,67.980469 13.548648,70.954812 17.626182,72.599609 21.900391,72.599609 H 77.599609 C 86.309736,72.599609 93.5,65.523566 93.5,56.800781 93.5,49.861444 88.932957,43.93227 82.568359,41.845703 80.209008,30.230901 69.847554,21.5 57.699219,21.5 Z M 57.699219,24.5 C 68.664176,24.5 78.042381,32.574423 79.820312,43.148437 L 79.982422,44.109375 80.925781,44.351562 C 86.461212,45.780061 90.5,50.882599 90.5,56.800781 90.5,63.877996 84.689483,69.599609 77.599609,69.599609 H 21.900391 C 18.385006,69.599609 15.072076,68.251763 12.660156,65.839844 L 12.642578,65.820312 12.623047,65.802734 C 10.021865,63.380944 8.5910267,60.095376 8.5,56.363281 V 56.199219 C 8.5,52.793956 9.832544,49.578389 12.279297,47.041016 14.799749,44.430547 18.190635,43 21.900391,43 22.500391,43 22.886812,43.002294 23.353516,43.080078 L 24.568359,43.28125 25.001953,42.130859 C 26.179894,39.017729 29.196019,36.900391 32.800781,36.900391 33.834115,36.900391 34.818897,37.066305 35.822266,37.484375 L 37.115234,38.023437 37.742187,36.771484 C 41.489512,29.276836 49.159658,24.5 57.699219,24.5 Z",
+                "itemStyle": {
+                  "color": "\u003dprops.printColor"
+                },
+                "keepAspect": true,
+                "offsetCenter": [
+                  "-28%",
+                  "-28%"
+                ],
+                "show": true,
+                "size": 25
+              },
+              "axisLabel": {
+                "show": false
+              },
+              "axisLine": {
+                "show": false
+              },
+              "axisTick": {
+                "show": false
+              },
+              "detail": {
+                "show": false
+              },
+              "id": "rain",
+              "pointer": {
+                "show": false
+              },
+              "progress": {
+                "show": false
+              },
+              "radius": "85%",
+              "splitLine": {
+                "show": false
+              },
+              "title": {
+                "show": false
+              },
+              "type": "gauge"
+            }
+          },
+          {
+            "component": "oh-data-series",
+            "config": {
+              "anchor": {
+                "icon": "path://M 30.564453,16.353516 C 28.102313,16.408856 25.618034,17.058891 23.333984,18.353516 L 23.328125,18.355469 23.324219,18.357422 C 16.068289,22.567336 13.565629,31.965502 17.712891,39.226562 L 17.714844,39.228516 17.716797,39.232422 C 18.367853,40.35585 19.142015,41.365905 20.013672,42.255859 L 21.443359,40.857422 C 20.688631,40.086851 20.017526,39.210444 19.451172,38.234375 V 38.232422 C 19.450231,38.2308 19.448206,38.230138 19.447266,38.228516 15.845167,31.914163 18.018962,23.748488 24.328125,20.087891 26.31788,18.962151 28.472761,18.401583 30.611328,18.353516 35.322022,18.247634 39.938438,20.627616 42.457031,24.96875 42.887844,25.730189 43.237477,26.518041 43.507812,27.322266 L 45.402344,26.685547 C 45.092284,25.763149 44.694344,24.856113 44.197266,23.978516 L 44.193359,23.972656 44.191406,23.96875 C 41.299927,18.980089 35.980963,16.231769 30.564453,16.353516 Z M 57.699219,21.5 C 48.440743,21.5 40.147523,26.568909 35.720703,34.470703 34.740953,34.203051 33.756475,33.900391 32.800781,33.900391 28.420493,33.900391 24.647047,36.370936 22.773437,40.054687 22.48915,40.04404 22.169674,40 21.900391,40 17.410147,40 13.200641,41.769453 10.121094,44.958984 7.1678467,48.021611 5.5,52.004482 5.5,56.199219 V 56.417969 56.4375 C 5.6087751,60.897281 7.374687,65.00355 10.5625,67.980469 13.548648,70.954812 17.626182,72.599609 21.900391,72.599609 H 77.599609 C 86.309736,72.599609 93.5,65.523566 93.5,56.800781 93.5,49.861444 88.932957,43.93227 82.568359,41.845703 80.209008,30.230901 69.847554,21.5 57.699219,21.5 Z M 57.699219,24.5 C 68.664176,24.5 78.042381,32.574423 79.820312,43.148437 L 79.982422,44.109375 80.925781,44.351562 C 86.461212,45.780061 90.5,50.882599 90.5,56.800781 90.5,63.877996 84.689483,69.599609 77.599609,69.599609 H 21.900391 C 18.385006,69.599609 15.072076,68.251763 12.660156,65.839844 L 12.642578,65.820312 12.623047,65.802734 C 10.021865,63.380944 8.5910267,60.095376 8.5,56.363281 V 56.199219 C 8.5,52.793956 9.832544,49.578389 12.279297,47.041016 14.799749,44.430547 18.190635,43 21.900391,43 22.500391,43 22.886812,43.002294 23.353516,43.080078 L 24.568359,43.28125 25.001953,42.130859 C 26.179894,39.017729 29.196019,36.900391 32.800781,36.900391 33.834115,36.900391 34.818897,37.066305 35.822266,37.484375 L 37.115234,38.023437 37.742187,36.771484 C 41.489512,29.276836 49.159658,24.5 57.699219,24.5 Z M 17.489095,19.874083 C 16.978594,19.874083 16.467895,19.679339 16.078407,19.289652 L 11.491641,14.70315 C 10.712533,13.923976 10.712533,12.661017 11.491641,11.881842 12.270815,11.102734 13.534039,11.10247 14.312949,11.881842 L 18.899715,16.468344 C 19.678824,17.247519 19.678824,18.510478 18.899715,19.289652 18.510294,19.679339 17.999793,19.874083 17.489095,19.874083 Z M 44.548391,19.874083 C 44.037957,19.874083 43.527192,19.679339 43.13777,19.289652 42.358664,18.510478 42.358664,17.247254 43.13777,16.468344 L 47.724537,11.881842 C 48.503711,11.102734 49.766935,11.10247 50.545845,11.881842 51.324954,12.661017 51.324954,13.924241 50.545845,14.70315 L 45.959078,19.289652 C 45.56959,19.679339 45.058892,19.874083 44.548391,19.874083 Z M 11.885096,33.403732 H 5.3985013 C 4.2966931,33.403732 3.403443,32.510489 3.403443,31.408681 3.403443,30.306873 4.2966931,29.413629 5.3985013,29.413629 H 11.885096 C 12.986904,29.413629 13.880148,30.306873 13.880148,31.408681 13.880148,32.510489 12.986904,33.403732 11.885096,33.403732 Z M 31.018744,14.270085 C 29.916936,14.270085 29.023692,13.376841 29.023692,12.275033 V 5.7884384 C 29.023692,4.6866301 29.916936,3.79338 31.018744,3.79338 32.120552,3.79338 33.013795,4.6866301 33.013795,5.7884384 V 12.275033 C 33.013795,13.376841 32.120552,14.270085 31.018744,14.270085 Z",
+                "itemStyle": {
+                  "color": "\u003dprops.printColor"
+                },
+                "keepAspect": true,
+                "offsetCenter": [
+                  "0%",
+                  "-43%"
+                ],
+                "show": true,
+                "size": 25
+              },
+              "axisLabel": {
+                "show": false
+              },
+              "axisLine": {
+                "show": false
+              },
+              "axisTick": {
+                "show": false
+              },
+              "detail": {
+                "show": false
+              },
+              "id": "fair",
+              "pointer": {
+                "show": false
+              },
+              "progress": {
+                "show": false
+              },
+              "radius": "85%",
+              "splitLine": {
+                "show": false
+              },
+              "title": {
+                "show": false
+              },
+              "type": "gauge"
+            }
+          },
+          {
+            "component": "oh-data-series",
+            "config": {
+              "anchor": {
+                "icon": "path://M 29.5399,32.5569 C 28.7679,32.5569 27.9956,32.2624 27.4066,31.6731 L 20.4703,24.7372 C 19.2921,23.5589 19.2921,21.649 20.4703,20.4707 21.6486,19.2925 23.5589,19.2921 24.7368,20.4707 L 31.6731,27.4066 C 32.8513,28.5849 32.8513,30.4948 31.6731,31.6731 31.0842,32.2624 30.3122,32.5569 29.5399,32.5569 Z M 77.396,80.4134 C 76.6241,80.4134 75.8517,80.119 75.2628,79.5297 L 68.3265,72.5934 C 67.1483,71.4151 67.1483,69.5048 68.3265,68.3269 69.5048,67.1487 71.4151,67.1487 72.593,68.3269 L 79.5293,75.2632 C 80.7075,76.4415 80.7075,78.3518 79.5293,79.5297 78.9403,80.119 78.1684,80.4134 77.396,80.4134 Z M 22.6036,80.4134 C 21.8316,80.4134 21.0593,80.119 20.4703,79.5297 19.2921,78.3514 19.2921,76.4411 20.4703,75.2632 L 27.4066,68.3269 C 28.5849,67.1487 30.4952,67.1487 31.6731,68.3269 32.8513,69.5052 32.8513,71.4155 31.6731,72.5934 L 24.7368,79.5297 C 24.1479,80.119 23.3759,80.4134 22.6036,80.4134 Z M 70.4601,32.5569 C 69.6882,32.5569 68.9158,32.2624 68.3269,31.6731 67.1487,30.4948 67.1487,28.5845 68.3269,27.4066 L 75.2632,20.4707 C 76.4415,19.2925 78.3518,19.2921 79.5297,20.4707 80.7079,21.649 80.7079,23.5593 79.5297,24.7372 L 72.5934,31.6731 C 72.0044,32.2624 71.2321,32.5569 70.4601,32.5569 Z M 21.0653,53.017 H 11.256 C 9.5898,53.017 8.23899,51.6662 8.23899,50 8.23899,48.3338 9.5898,46.983 11.256,46.983 H 21.0653 C 22.7315,46.983 24.0823,48.3338 24.0823,50 24.0823,51.6662 22.7315,53.017 21.0653,53.017 Z M 88.744,53.017 H 78.9347 C 77.2685,53.017 75.9177,51.6662 75.9177,50 75.9177,48.3338 77.2685,46.983 78.9347,46.983 H 88.744 C 90.4102,46.983 91.761,48.3338 91.761,50 91.761,51.6662 90.4106,53.017 88.744,53.017 Z M 50,91.761 C 48.3338,91.761 46.983,90.4102 46.983,88.744 V 78.9347 C 46.983,77.2685 48.3338,75.9177 50,75.9177 51.6662,75.9177 53.017,77.2685 53.017,78.9347 V 88.744 C 53.017,90.4106 51.6662,91.761 50,91.761 Z M 50,24.0823 C 48.3338,24.0823 46.983,22.7315 46.983,21.0653 V 11.256 C 46.983,9.5898 48.3338,8.23899 50,8.23899 51.6662,8.23899 53.017,9.5898 53.017,11.256 V 21.0653 C 53.017,22.7315 51.6662,24.0823 50,24.0823 Z M 50,28.207031 C 37.99721,28.207031 28.207031,37.99721 28.207031,50 28.207031,62.00279 37.99721,71.792969 50,71.792969 62.00279,71.792969 71.792969,62.00279 71.792969,50 71.792969,37.99721 62.00279,28.207031 50,28.207031 Z M 50,31.207031 C 60.37564,31.207031 68.792969,39.62436 68.792969,50 68.792969,60.37564 60.37564,68.792969 50,68.792969 39.62436,68.792969 31.207031,60.37564 31.207031,50 31.207031,39.62436 39.62436,31.207031 50,31.207031 Z",
+                "itemStyle": {
+                  "color": "\u003dprops.printColor"
+                },
+                "keepAspect": true,
+                "offsetCenter": [
+                  "28%",
+                  "-28%"
+                ],
+                "show": true,
+                "size": 25
+              },
+              "axisLabel": {
+                "show": false
+              },
+              "axisLine": {
+                "show": false
+              },
+              "axisTick": {
+                "show": false
+              },
+              "detail": {
+                "show": false
+              },
+              "id": "sun",
+              "pointer": {
+                "show": false
+              },
+              "progress": {
+                "show": false
+              },
+              "radius": "85%",
+              "splitLine": {
+                "show": false
+              },
+              "title": {
+                "show": false
+              },
+              "type": "gauge"
+            }
+          },
+          {
+            "component": "oh-data-series",
+            "config": {
+              "anchor": {
+                "itemStyle": {
+                  "color": "\u003dprops.needleColor",
+                  "shadowBlur": 0
+                },
+                "show": "\u003dprops.primary\u003d\u003d\"mbar\"?true:false",
+                "showAbove": true,
+                "size": 12
+              },
+              "axisLabel": {
+                "color": "\u003dprops.printColor",
+                "distance": -6,
+                "fontSize": "\u003dprops.primaryFontSize",
+                "fontWeight": 100,
+                "rotate": "tangential",
+                "show": "\u003dprops.primary\u003d\u003d\"mbar\"?true:false"
+              },
+              "axisLine": {
+                "lineStyle": {
+                  "color": [
+                    [
+                      1,
+                      "\u003dprops.printColor"
+                    ]
+                  ],
+                  "width": 1
+                },
+                "show": "\u003dprops.primary\u003d\u003d\"mbar\"?true:false"
+              },
+              "axisTick": {
+                "distance": 0,
+                "length": "-7%",
+                "lineStyle": {
+                  "color": "\u003dprops.printColor"
+                },
+                "show": "\u003dprops.primary\u003d\u003d\"mbar\"?true:false",
+                "splitNumber": 5
+              },
+              "data": [
+                {
+                  "itemStyle": {
+                    "color": "\u003dprops.needleColor"
+                  },
+                  "name": "\u003dprops.title",
+                  "value": "\u003dNumber.parseFloat(items[props.item].state)"
+                }
+              ],
+              "detail": {
+                "backgroundColor": "rgb(137,150,96)",
+                "borderColor": "#000",
+                "borderWidth": 1,
+                "color": "#000",
+                "fontFamily": "Courier New",
+                "fontSize": "1em",
+                "fontWeight": 600,
+                "formatter": "\u003dv\u003d\u003ev.toFixed(props.primary\u003d\u003d\u0027inhg\u0027?2:0)+(items[props.item].state.split(\u0027 \u0027).length \u003e 1 ? \u0027 \u0027+(items[props.item].state.split(\u0027 \u0027)[1]\u003d\u003d\u0027hPa\u0027?\u0027mbar\u0027:items[props.item].state.split(\u0027 \u0027)[1]) : \u0027\u0027)",
+                "height": "25%",
+                "offsetCenter": [
+                  0,
+                  "95%"
+                ],
+                "padding": [
+                  1,
+                  2,
+                  0,
+                  2
+                ],
+                "show": "\u003dprops.enableLCD?true:false",
+                "valueAnimation": true,
+                "width": "94%"
+              },
+              "id": "pri_mbar",
+              "max": 1070,
+              "min": 950,
+              "pointer": {
+                "icon": "path://M 50 15 C 49.913974 15 49.800781 15.164063 49.800781 15.164062 L 49.734375 27.259766 C 49.577351 27.78691 49.375239 28.417768 49.199219 28.822266 C 48.818399 29.697395 47.800781 31.320312 47.800781 31.320312 C 47.800781 31.320313 48.684895 30.64024 49.716797 30.527344 L 49.5 70.138672 C 48.058396 70.382346 47.002396 71.629746 47 73.091797 C 47.002792 73.747385 47.220261 74.384011 47.619141 74.904297 C 47.575406 74.72325 47.552471 74.537807 47.550781 74.351562 C 47.550794 72.999197 48.647216 71.902775 50 71.902344 C 51.352784 71.902775 52.449206 72.999197 52.449219 74.351562 C 52.447529 74.537807 52.424594 74.72325 52.380859 74.904297 C 52.779739 74.384011 52.997208 73.747385 53 73.091797 C 52.999508 71.628269 51.943058 70.378687 50.5 70.134766 L 50.283203 30.525391 C 51.314589 30.615983 52.199219 31.158203 52.199219 31.158203 C 52.199219 31.158203 51.182411 29.591289 50.800781 28.742188 C 50.625205 28.351542 50.422793 27.740799 50.265625 27.230469 L 50.199219 15.164062 C 50.199219 15.164062 50.086026 15 50 15 z",
+                "itemStyle": {
+                  "color": "\u003dprops.needleColor",
+                  "shadowBlur": 2,
+                  "shadowColor": "#000a",
+                  "shadowOffsetX": 2,
+                  "shadowOffsetY": 2
+                },
+                "keepAspect": true,
+                "length": "150%",
+                "offsetCenter": [
+                  0,
+                  "53%"
+                ],
+                "show": "\u003dprops.primary\u003d\u003d\"mbar\"?true:false",
+                "width": "15%"
+              },
+              "radius": "60%",
+              "splitLine": {
+                "distance": 0,
+                "length": "-7%",
+                "lineStyle": {
+                  "color": "\u003dprops.printColor",
+                  "width": 2
+                },
+                "show": "\u003dprops.primary\u003d\u003d\"mbar\"?true:false"
+              },
+              "splitNumber": 12,
+              "title": {
+                "color": "\u003dprops.printColor",
+                "offsetCenter": [
+                  0,
+                  "35%"
+                ],
+                "show": "\u003dprops.primary\u003d\u003d\"mbar\"?true:false"
+              },
+              "tooltip": {
+                "formatter": "\u003dp\u003d\u003e\u0027\u003cb\u003e\u0027+p.value.toFixed(1)+(items[props.item].state.split(\u0027 \u0027).length \u003e 1 ? \u0027 \u0027+items[props.item].state.split(\u0027 \u0027)[1] : \u0027\u0027)+\u0027\u003c/b\u003e\u0027"
+              },
+              "type": "gauge"
+            }
+          },
+          {
+            "component": "oh-data-series",
+            "config": {
+              "anchor": {
+                "itemStyle": {
+                  "color": "\u003dprops.needleColor",
+                  "shadowBlur": 0
+                },
+                "show": "\u003dprops.primary\u003d\u003d\"inhg\"?true:false",
+                "showAbove": true,
+                "size": 12
+              },
+              "axisLabel": {
+                "color": "\u003dprops.printColor",
+                "distance": -6,
+                "fontSize": "\u003dprops.primaryFontSize",
+                "fontWeight": 100,
+                "rotate": "tangential",
+                "show": "\u003dprops.primary\u003d\u003d\"inhg\"?true:false"
+              },
+              "axisLine": {
+                "lineStyle": {
+                  "color": [
+                    [
+                      1,
+                      "\u003dprops.printColor"
+                    ]
+                  ],
+                  "width": 1
+                },
+                "show": "\u003dprops.primary\u003d\u003d\"inhg\"?true:false"
+              },
+              "axisTick": {
+                "distance": 0,
+                "length": "-7%",
+                "lineStyle": {
+                  "color": "\u003dprops.printColor"
+                },
+                "show": "\u003dprops.primary\u003d\u003d\"inhg\"?true:false",
+                "splitNumber": 5
+              },
+              "data": [
+                {
+                  "itemStyle": {
+                    "color": "\u003dprops.needleColor"
+                  },
+                  "name": "\u003dprops.title",
+                  "value": "\u003dNumber.parseFloat(items[props.item].state)"
+                }
+              ],
+              "detail": {
+                "show": false
+              },
+              "endAngle": -37.5975,
+              "id": "pri_inhg",
+              "max": 31.5,
+              "min": 28,
+              "pointer": {
+                "icon": "path://M 50 15 C 49.913974 15 49.800781 15.164063 49.800781 15.164062 L 49.734375 27.259766 C 49.577351 27.78691 49.375239 28.417768 49.199219 28.822266 C 48.818399 29.697395 47.800781 31.320312 47.800781 31.320312 C 47.800781 31.320313 48.684895 30.64024 49.716797 30.527344 L 49.5 70.138672 C 48.058396 70.382346 47.002396 71.629746 47 73.091797 C 47.002792 73.747385 47.220261 74.384011 47.619141 74.904297 C 47.575406 74.72325 47.552471 74.537807 47.550781 74.351562 C 47.550794 72.999197 48.647216 71.902775 50 71.902344 C 51.352784 71.902775 52.449206 72.999197 52.449219 74.351562 C 52.447529 74.537807 52.424594 74.72325 52.380859 74.904297 C 52.779739 74.384011 52.997208 73.747385 53 73.091797 C 52.999508 71.628269 51.943058 70.378687 50.5 70.134766 L 50.283203 30.525391 C 51.314589 30.615983 52.199219 31.158203 52.199219 31.158203 C 52.199219 31.158203 51.182411 29.591289 50.800781 28.742188 C 50.625205 28.351542 50.422793 27.740799 50.265625 27.230469 L 50.199219 15.164062 C 50.199219 15.164062 50.086026 15 50 15 z",
+                "itemStyle": {
+                  "color": "\u003dprops.needleColor",
+                  "shadowBlur": 2,
+                  "shadowColor": "#000a",
+                  "shadowOffsetX": 2,
+                  "shadowOffsetY": 2
+                },
+                "keepAspect": true,
+                "length": "150%",
+                "offsetCenter": [
+                  0,
+                  "53%"
+                ],
+                "show": "\u003dprops.primary\u003d\u003d\"inhg\"?true:false",
+                "width": "15%"
+              },
+              "radius": "60%",
+              "splitLine": {
+                "distance": 0,
+                "length": "-7%",
+                "lineStyle": {
+                  "color": "\u003dprops.printColor",
+                  "width": 2
+                },
+                "show": "\u003dprops.primary\u003d\u003d\"inhg\"?true:false"
+              },
+              "splitNumber": 7,
+              "startAngle": 229.0725,
+              "title": {
+                "color": "\u003dprops.printColor",
+                "offsetCenter": [
+                  0,
+                  "35%"
+                ],
+                "show": "\u003dprops.primary\u003d\u003d\"inhg\"?true:false"
+              },
+              "tooltip": {
+                "formatter": "\u003dp\u003d\u003e\u0027\u003cb\u003e\u0027+p.value.toFixed(3)+(items[props.item].state.split(\u0027 \u0027).length \u003e 1 ? \u0027 \u0027+items[props.item].state.split(\u0027 \u0027)[1] : \u0027\u0027)+\u0027\u003c/b\u003e\u0027"
+              },
+              "type": "gauge"
+            }
+          },
+          {
+            "component": "oh-data-series",
+            "config": {
+              "anchor": {
+                "show": "false;"
+              },
+              "axisLabel": {
+                "color": "\u003dprops.printColor",
+                "distance": 10,
+                "fontSize": "\u003dprops.secondaryFontSize",
+                "fontWeight": 100,
+                "rotate": "tangential",
+                "show": "\u003dprops.secondary\u003d\u003d\"mbar\"?true:false"
+              },
+              "axisLine": {
+                "lineStyle": {
+                  "color": [
+                    [
+                      1,
+                      "\u003dprops.printColor"
+                    ]
+                  ],
+                  "width": 1
+                },
+                "show": "\u003dprops.secondary\u003d\u003d\"mbar\"?true:false"
+              },
+              "axisTick": {
+                "distance": 0,
+                "length": "7%",
+                "lineStyle": {
+                  "color": "\u003dprops.printColor"
+                },
+                "show": "\u003dprops.secondary\u003d\u003d\"mbar\"?true:false",
+                "splitNumber": 5
+              },
+              "detail": {
+                "show": false
+              },
+              "endAngle": -45,
+              "id": "sec_mbar",
+              "max": 1070,
+              "min": 950,
+              "pointer": {
+                "show": false
+              },
+              "radius": "57%",
+              "splitLine": {
+                "distance": 0,
+                "length": "7%",
+                "lineStyle": {
+                  "color": "\u003dprops.printColor",
+                  "width": 2
+                },
+                "show": "\u003dprops.secondary\u003d\u003d\"mbar\"?true:false"
+              },
+              "splitNumber": 12,
+              "startAngle": 225,
+              "title": {
+                "show": false
+              },
+              "type": "gauge"
+            }
+          },
+          {
+            "component": "oh-data-series",
+            "config": {
+              "anchor": {
+                "show": "false;"
+              },
+              "axisLabel": {
+                "color": "\u003dprops.printColor",
+                "distance": 10,
+                "fontSize": "\u003dprops.secondaryFontSize-2",
+                "fontWeight": 100,
+                "rotate": "tangential",
+                "show": "\u003dprops.secondary\u003d\u003d\"pascal\"?true:false"
+              },
+              "axisLine": {
+                "lineStyle": {
+                  "color": [
+                    [
+                      1,
+                      "\u003dprops.printColor"
+                    ]
+                  ],
+                  "width": 1
+                },
+                "show": "\u003dprops.secondary\u003d\u003d\"pascal\"?true:false"
+              },
+              "axisTick": {
+                "distance": 0,
+                "length": "7%",
+                "lineStyle": {
+                  "color": "\u003dprops.printColor"
+                },
+                "show": "\u003dprops.secondary\u003d\u003d\"pascal\"?true:false",
+                "splitNumber": 5
+              },
+              "detail": {
+                "show": false
+              },
+              "endAngle": -45,
+              "id": "sec_pascal",
+              "max": 107000,
+              "min": 95000,
+              "pointer": {
+                "show": false
+              },
+              "radius": "57%",
+              "splitLine": {
+                "distance": 0,
+                "length": "7%",
+                "lineStyle": {
+                  "color": "\u003dprops.printColor",
+                  "width": 2
+                },
+                "show": "\u003dprops.secondary\u003d\u003d\"pascal\"?true:false"
+              },
+              "splitNumber": 12,
+              "startAngle": 225,
+              "title": {
+                "show": false
+              },
+              "type": "gauge"
+            }
+          },
+          {
+            "component": "oh-data-series",
+            "config": {
+              "anchor": {
+                "show": "false;"
+              },
+              "axisLabel": {
+                "color": "\u003dprops.printColor",
+                "distance": 10,
+                "fontSize": "\u003dprops.secondaryFontSize",
+                "fontWeight": 100,
+                "rotate": "tangential",
+                "show": "\u003dprops.secondary\u003d\u003d\"inhg\"?true:false"
+              },
+              "axisLine": {
+                "lineStyle": {
+                  "color": [
+                    [
+                      1,
+                      "\u003dprops.printColor"
+                    ]
+                  ],
+                  "width": 1
+                },
+                "show": "\u003dprops.secondary\u003d\u003d\"inhg\"?true:false"
+              },
+              "axisTick": {
+                "distance": 0,
+                "length": "7%",
+                "lineStyle": {
+                  "color": "\u003dprops.printColor"
+                },
+                "show": "\u003dprops.secondary\u003d\u003d\"inhg\"?true:false",
+                "splitNumber": 5
+              },
+              "detail": {
+                "show": false
+              },
+              "endAngle": -37.5975,
+              "id": "sec_inhg",
+              "max": 31.5,
+              "min": 28,
+              "pointer": {
+                "show": false
+              },
+              "radius": "57%",
+              "splitLine": {
+                "distance": 0,
+                "length": "7%",
+                "lineStyle": {
+                  "color": "\u003dprops.printColor",
+                  "width": 2
+                },
+                "show": "\u003dprops.secondary\u003d\u003d\"inhg\"?true:false"
+              },
+              "splitNumber": 7,
+              "startAngle": 229.0725,
+              "title": {
+                "show": false
+              },
+              "type": "gauge"
+            }
+          },
+          {
+            "component": "oh-data-series",
+            "config": {
+              "anchor": {
+                "show": "false;"
+              },
+              "axisLabel": {
+                "color": "\u003dprops.printColor",
+                "distance": 10,
+                "fontSize": "\u003dprops.secondaryFontSize",
+                "fontWeight": 100,
+                "rotate": "tangential",
+                "show": "\u003dprops.secondary\u003d\u003d\"psi\"?true:false"
+              },
+              "axisLine": {
+                "lineStyle": {
+                  "color": [
+                    [
+                      1,
+                      "\u003dprops.printColor"
+                    ]
+                  ],
+                  "width": 1
+                },
+                "show": "\u003dprops.secondary\u003d\u003d\"psi\"?true:false"
+              },
+              "axisTick": {
+                "distance": 0,
+                "length": "7%",
+                "lineStyle": {
+                  "color": "\u003dprops.printColor"
+                },
+                "show": "\u003dprops.secondary\u003d\u003d\"psi\"?true:false",
+                "splitNumber": 4
+              },
+              "detail": {
+                "show": false
+              },
+              "endAngle": -42.0525,
+              "id": "sec_psi",
+              "max": 15.5,
+              "min": 13.8,
+              "pointer": {
+                "show": false
+              },
+              "radius": "57%",
+              "splitLine": {
+                "distance": 0,
+                "length": "7%",
+                "lineStyle": {
+                  "color": "\u003dprops.printColor",
+                  "width": 2
+                },
+                "show": "\u003dprops.secondary\u003d\u003d\"psi\"?true:false"
+              },
+              "splitNumber": 8.5,
+              "startAngle": 221.67,
+              "title": {
+                "show": false
+              },
+              "type": "gauge"
+            }
+          },
+          {
+            "component": "oh-data-series",
+            "config": {
+              "anchor": {
+                "show": "false;"
+              },
+              "axisLabel": {
+                "color": "\u003dprops.printColor",
+                "distance": 10,
+                "fontSize": "\u003dprops.secondaryFontSize",
+                "fontWeight": 100,
+                "rotate": "tangential",
+                "show": "\u003dprops.secondary\u003d\u003d\"mmhg\"?true:false"
+              },
+              "axisLine": {
+                "lineStyle": {
+                  "color": [
+                    [
+                      1,
+                      "\u003dprops.printColor"
+                    ]
+                  ],
+                  "width": 1
+                },
+                "show": "\u003dprops.secondary\u003d\u003d\"mmhg\"?true:false"
+              },
+              "axisTick": {
+                "distance": 0,
+                "length": "7%",
+                "lineStyle": {
+                  "color": "\u003dprops.printColor"
+                },
+                "show": "\u003dprops.secondary\u003d\u003d\"mmhg\"?true:false",
+                "splitNumber": 5
+              },
+              "detail": {
+                "show": false
+              },
+              "endAngle": -37.305,
+              "id": "sec_mmhg",
+              "max": 800,
+              "min": 710,
+              "pointer": {
+                "show": false
+              },
+              "radius": "57%",
+              "splitLine": {
+                "distance": 0,
+                "length": "7%",
+                "lineStyle": {
+                  "color": "\u003dprops.printColor",
+                  "width": 2
+                },
+                "show": "\u003dprops.secondary\u003d\u003d\"mmhg\"?true:false"
+              },
+              "splitNumber": 9,
+              "startAngle": 232.6725,
+              "title": {
+                "show": false
+              },
+              "type": "gauge"
+            }
+          }
+        ],
+        "tooltip": [
+          {
+            "component": "oh-chart-tooltip",
+            "config": {
+              "show": true
+            }
+          }
+        ]
+      }
+    }
+  },
+  "d10af05e-23b1-497a-b09f-85b908f867b7": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "d10af05e-23b1-497a-b09f-85b908f867b7",
+      "tags": [
+        "marketplace:115190"
+      ],
+      "props": {
+        "parameters": [],
+        "parameterGroups": []
+      },
+      "component": "http://192.168.0.13:3000/d-solo/4OdYJNbMk/energie-pv-haus?orgId\u003d1\u0026refresh\u003d1m\u0026from\u003dnow-{period}\u0026to\u003dnow\u0026panelId\u003d2",
+      "config": {}
+    }
+  },
+  "universal_toggle_v4": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "universal_toggle_v4",
+      "tags": [
+        "marketplace:115500"
+      ],
+      "props": {
+        "parameters": [
+          {
+            "description": "Title of the card",
+            "label": "Title",
+            "name": "title",
+            "required": false,
+            "type": "TEXT"
+          },
+          {
+            "description": "The card footer",
+            "label": "Footer",
+            "name": "footer",
+            "required": false,
+            "type": "TEXT"
+          },
+          {
+            "description": "Name of the Icon (see https://framework7.io/icons/ for available icons)",
+            "label": "F7 Icon",
+            "name": "icon",
+            "required": true,
+            "type": "TEXT"
+          },
+          {
+            "description": "Color scheme for icons and toggles (see https://framework7.io/docs/color-themes.html for available color schemes)",
+            "label": "Color",
+            "name": "color",
+            "required": true,
+            "type": "TEXT"
+          },
+          {
+            "context": "item",
+            "description": "Main toggle item (use for single toggle or as main switch for group)",
+            "label": "Item",
+            "name": "maintoggle",
+            "required": false,
+            "type": "TEXT"
+          },
+          {
+            "description": "Group toggles (use as group with or without main toggle)",
+            "label": "Group toggle Array",
+            "name": "grouptogglearray",
+            "required": false,
+            "type": "TEXT"
+          }
+        ],
+        "parameterGroups": []
+      },
+      "timestamp": "Aug 27, 2023, 5:49:59 PM",
+      "component": "f7-card",
+      "config": {
+        "title": "\u003d(props.title)"
+      },
+      "slots": {
+        "default": [
+          {
+            "component": "f7-card-content",
+            "slots": {
+              "default": [
+                {
+                  "component": "f7-swiper",
+                  "config": {
+                    "init": true,
+                    "pagination": "\u003d(props.maintoggle) \u0026\u0026 (props.grouptogglearray) ? true : false",
+                    "params": {
+                      "pagination": {
+                        "clickable": true
+                      },
+                      "slidesPerView": 1
+                    },
+                    "style": {
+                      "height": "175px",
+                      "width": "100%"
+                    }
+                  },
+                  "slots": {
+                    "default": [
+                      {
+                        "component": "f7-swiper-slide",
+                        "config": {
+                          "style": {
+                            "height": "100%",
+                            "width": "100%"
+                          },
+                          "visible": "\u003d(props.maintoggle) ? true : false"
+                        },
+                        "slots": {
+                          "default": [
+                            {
+                              "component": "f7-col",
+                              "config": {
+                                "class": [
+                                  "display-flex",
+                                  "flex-direction-column",
+                                  "align-items-center",
+                                  "justify-content-space-evenly"
+                                ],
+                                "style": {
+                                  "height": "100%",
+                                  "width": "100%"
+                                }
+                              },
+                              "slots": {
+                                "default": [
+                                  {
+                                    "component": "oh-link",
+                                    "config": {
+                                      "action": "toggle",
+                                      "actionCommand": true,
+                                      "actionCommandAlt": false,
+                                      "actionItem": "\u003dprops.maintoggle"
+                                    },
+                                    "slots": {
+                                      "default": [
+                                        {
+                                          "component": "f7-icon",
+                                          "config": {
+                                            "color": "\u003ditems[props.maintoggle].state \u003d\u003d \"ON\" ? props.color : items[props.maintoggle].state \u003e 0 ? props.color : \"gray\"",
+                                            "f7": "\u003dprops.icon",
+                                            "size": "\u003d(props.grouptogglearray) ? \"100\" : \"120\""
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "component": "oh-toggle",
+                                    "config": {
+                                      "colorTheme": "\u003dprops.color",
+                                      "item": "\u003dprops.maintoggle"
+                                    }
+                                  },
+                                  {
+                                    "component": "f7-block",
+                                    "config": {
+                                      "style": {
+                                        "display": "\u003d(props.grouptogglearray) ? \"block\" : \"none\"",
+                                        "height": "35px"
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "component": "f7-swiper-slide",
+                        "config": {
+                          "visible": "\u003d(props.grouptogglearray) ? true : false"
+                        },
+                        "slots": {
+                          "default": [
+                            {
+                              "component": "f7-swiper",
+                              "config": {
+                                "params": {
+                                  "direction": "vertical",
+                                  "mousewheel": true,
+                                  "scrollbar": {
+                                    "hide": true
+                                  },
+                                  "slidesPerView": 1
+                                },
+                                "scrollbar": true,
+                                "style": {
+                                  "height": "100%",
+                                  "width": "100%"
+                                }
+                              },
+                              "slots": {
+                                "default": [
+                                  {
+                                    "component": "oh-repeater",
+                                    "config": {
+                                      "for": "item",
+                                      "fragment": true,
+                                      "in": "\u003dprops.grouptogglearray.split(\"|\")"
+                                    },
+                                    "slots": {
+                                      "default": [
+                                        {
+                                          "component": "f7-swiper-slide",
+                                          "config": {
+                                            "style": {
+                                              "height": "100%",
+                                              "width": "100%"
+                                            }
+                                          },
+                                          "slots": {
+                                            "default": [
+                                              {
+                                                "component": "f7-col",
+                                                "config": {
+                                                  "class": [
+                                                    "display-flex",
+                                                    "flex-direction-column",
+                                                    "align-items-center",
+                                                    "justify-content-space-evenly"
+                                                  ],
+                                                  "style": {
+                                                    "height": "100%",
+                                                    "width": "100%"
+                                                  }
+                                                },
+                                                "slots": {
+                                                  "default": [
+                                                    {
+                                                      "component": "f7-block-title",
+                                                      "config": {
+                                                        "style": {
+                                                          "margin-bottom": "-2px",
+                                                          "margin-top": "10px"
+                                                        }
+                                                      },
+                                                      "slots": {
+                                                        "default": [
+                                                          {
+                                                            "component": "Label",
+                                                            "config": {
+                                                              "text": "\u003dloop.item.split(\"\\\"\")[1]"
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    },
+                                                    {
+                                                      "component": "oh-link",
+                                                      "config": {
+                                                        "action": "toggle",
+                                                        "actionCommand": true,
+                                                        "actionCommandAlt": false,
+                                                        "actionItem": "\u003d(loop.item.split(\"\\\"\")[3])"
+                                                      },
+                                                      "slots": {
+                                                        "default": [
+                                                          {
+                                                            "component": "f7-icon",
+                                                            "config": {
+                                                              "color": "\u003ditems[loop.item.split(\"\\\"\")[3]].state \u003d\u003d \"ON\" ? props.color : \"gray\"",
+                                                              "f7": "\u003dprops.icon",
+                                                              "size": 70
+                                                            }
+                                                          }
+                                                        ]
+                                                      }
+                                                    },
+                                                    {
+                                                      "component": "oh-toggle",
+                                                      "config": {
+                                                        "colorTheme": "\u003dprops.color",
+                                                        "item": "\u003d(loop.item.split(\"\\\"\")[3])"
+                                                      }
+                                                    },
+                                                    {
+                                                      "component": "f7-block",
+                                                      "config": {
+                                                        "style": {
+                                                          "display": "\u003d(props.maintoggle) ? \"block\" : \"none\"",
+                                                          "height": "35px"
+                                                        }
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "component": "f7-card-footer",
+            "slots": {
+              "default": [
+                {
+                  "component": "Label",
+                  "config": {
+                    "text": "\u003dprops.footer"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "wind_gauge": {
+    "class": "org.openhab.core.ui.components.RootUIComponent",
+    "value": {
+      "uid": "wind_gauge",
+      "tags": [
+        "direction",
+        "gauge",
+        "marketplace:160823",
+        "speed",
+        "wind"
+      ],
+      "props": {
+        "parameters": [
+          {
+            "description": "The gauge title",
+            "label": "Title",
+            "name": "title",
+            "required": false,
+            "type": "TEXT"
+          },
+          {
+            "context": "item",
+            "description": "The source wind direction in degrees",
+            "label": "Direction Item",
+            "name": "directionItem",
+            "required": false,
+            "type": "TEXT"
+          },
+          {
+            "default": "classic",
+            "description": "The wind direction needle type",
+            "label": "Direction Needle Type",
+            "name": "directionNeedleType",
+            "required": false,
+            "type": "TEXT",
+            "limitToOptions": true,
+            "options": [
+              {
+                "label": "Classic",
+                "value": "classic"
+              },
+              {
+                "label": "Modern",
+                "value": "modern"
+              }
+            ]
+          },
+          {
+            "default": "#e64a19",
+            "description": "The wind direction needle color",
+            "label": "Direction Needle Color",
+            "name": "directionNeedleColor",
+            "required": false,
+            "type": "TEXT",
+            "advanced": true
+          },
+          {
+            "description": "The wind direction name in the tooltip",
+            "label": "Direction Name",
+            "name": "directionName",
+            "required": false,
+            "type": "TEXT"
+          },
+          {
+            "default": "true",
+            "description": "Whether to show the LCD",
+            "label": "Show LCD",
+            "name": "showLCD",
+            "required": false,
+            "type": "BOOLEAN"
+          },
+          {
+            "default": "abbrev",
+            "description": "What to show on the LCD, degrees or name abbreviations (N, NE, ...)",
+            "label": "LCD Content",
+            "name": "lcdContent",
+            "required": false,
+            "type": "TEXT",
+            "limitToOptions": true,
+            "options": [
+              {
+                "label": "Degrees",
+                "value": "degrees"
+              },
+              {
+                "label": "Direction Abbreviations",
+                "value": "abbrev"
+              }
+            ]
+          },
+          {
+            "default": "N,NNE,NE,ENE,E,ESE,SE,SSE,S,SSW,SW,WSW,W,WNW,NW,NNW,N",
+            "description": "LCD Direction name abbreviations mappings, can be used to translate the abbreviations to another language (no spaces).",
+            "label": "Direction Abbreviations",
+            "name": "directionAbbreviations",
+            "required": false,
+            "type": "TEXT"
+          },
+          {
+            "default": "18",
+            "description": "The LCD font size",
+            "label": "LCD Font Size",
+            "name": "lcdFontSize",
+            "required": false,
+            "type": "INTEGER",
+            "min": 6,
+            "max": 50,
+            "advanced": true
+          },
+          {
+            "context": "item",
+            "description": "The wind speed",
+            "label": "Wind Speed",
+            "name": "windSpeed",
+            "required": false,
+            "type": "TEXT"
+          },
+          {
+            "default": "#066a19",
+            "description": "The wind speed needle color",
+            "label": "Speed Needle Color",
+            "name": "speedNeedleColor",
+            "required": false,
+            "type": "TEXT",
+            "advanced": true
+          },
+          {
+            "description": "The wind speed name in the tooltip",
+            "label": "Speed Name",
+            "name": "speedName",
+            "required": false,
+            "type": "TEXT"
+          },
+          {
+            "context": "item",
+            "description": "The wind gust speed",
+            "label": "Gust Speed",
+            "name": "gustSpeed",
+            "required": false,
+            "type": "TEXT"
+          },
+          {
+            "default": "#ff4a19",
+            "description": "The wind gust speed needle color",
+            "label": "Gust Needle Color",
+            "name": "gustNeedleColor",
+            "required": false,
+            "type": "TEXT",
+            "advanced": true
+          },
+          {
+            "description": "The wind gust speed name in the tooltip",
+            "label": "Gust Name",
+            "name": "gustName",
+            "required": false,
+            "type": "TEXT"
+          },
+          {
+            "context": "item",
+            "description": "The 3rd wind speed, can be an average or a maximum for example",
+            "label": "3rd Wind Speed",
+            "name": "thirdSpeed",
+            "required": false,
+            "type": "TEXT"
+          },
+          {
+            "default": "#194aff",
+            "description": "The 3rd wind speed needle color",
+            "label": "3rd Wind Speed Needle Color",
+            "name": "thirdNeedleColor",
+            "required": false,
+            "type": "TEXT",
+            "advanced": true
+          },
+          {
+            "description": "The 3rd wind speed name in the tooltip",
+            "label": "3rd Wind Speed Name",
+            "name": "thirdName",
+            "required": false,
+            "type": "TEXT"
+          },
+          {
+            "default": "classic",
+            "description": "The wind speed needle type",
+            "label": "Wind Speed Needle Type",
+            "name": "speedNeedleType",
+            "required": false,
+            "type": "TEXT",
+            "limitToOptions": true,
+            "options": [
+              {
+                "label": "Classic",
+                "value": "classic"
+              },
+              {
+                "label": "Modern",
+                "value": "modern"
+              }
+            ]
+          },
+          {
+            "default": "40",
+            "description": "The maximum wind speed to show",
+            "label": "Max Speed",
+            "name": "maxSpeed",
+            "required": false,
+            "type": "DECIMAL"
+          },
+          {
+            "description": "The number of wind speed splits",
+            "label": "Speed Splits",
+            "name": "speedSplits",
+            "required": false,
+            "type": "INTEGER",
+            "min": 1,
+            "max": 20
+          },
+          {
+            "default": "4",
+            "description": "The number of ticks between each wind speed split",
+            "label": "Speed Ticks",
+            "name": "speedTicks",
+            "required": false,
+            "type": "INTEGER",
+            "min": 1,
+            "max": 20
+          },
+          {
+            "default": "false",
+            "description": "Whether to show a wind speed chart if clicked. Disables tooltips.",
+            "label": "Show Speed Chart",
+            "name": "showChart",
+            "required": false,
+            "type": "BOOLEAN"
+          },
+          {
+            "default": "13",
+            "description": "The wind direction font size",
+            "label": "Direction Font Size",
+            "name": "directionFontSize",
+            "required": false,
+            "type": "INTEGER",
+            "min": 6,
+            "max": 50,
+            "advanced": true
+          },
+          {
+            "default": "12",
+            "description": "The wind speed font size",
+            "label": "Speed Font Size",
+            "name": "speedFontSize",
+            "required": false,
+            "type": "INTEGER",
+            "min": 6,
+            "max": 50,
+            "advanced": true
+          },
+          {
+            "default": "#ddd",
+            "description": "The gauge frame color",
+            "label": "Frame Color",
+            "name": "frameColor",
+            "required": false,
+            "type": "TEXT"
+          },
+          {
+            "default": "#0008",
+            "description": "The gauge frame shadow color",
+            "label": "Frame Shadow Color",
+            "name": "frameShadowColor",
+            "required": false,
+            "type": "TEXT",
+            "advanced": true
+          },
+          {
+            "default": "10",
+            "description": "The gauge frame shadow blur",
+            "label": "Frame Shadow Blur",
+            "name": "frameShadowBlur",
+            "required": false,
+            "type": "INTEGER",
+            "min": 0,
+            "max": 30,
+            "advanced": true
+          },
+          {
+            "default": "transparent",
+            "description": "The dial color",
+            "label": "Dial Color",
+            "name": "dialColor",
+            "required": false,
+            "type": "TEXT"
+          },
+          {
+            "default": "#464646",
+            "description": "The dial print color",
+            "label": "Dial Print Color",
+            "name": "dialPrintColor",
+            "required": false,
+            "type": "TEXT"
+          },
+          {
+            "default": "#464646",
+            "description": "The wind speed scale print color",
+            "label": "Speed Scale Print Color",
+            "name": "speedPrintColor",
+            "required": false,
+            "type": "TEXT"
+          },
+          {
+            "description": "The widget height (in px, %, etc.)",
+            "label": "Height",
+            "name": "height",
+            "required": false,
+            "type": "TEXT",
+            "advanced": true
+          }
+        ],
+        "parameterGroups": []
+      },
+      "timestamp": "Jan 25, 2026, 2:32:23 AM",
+      "component": "f7-block",
+      "config": {
+        "class": [
+          "no-margin"
+        ]
+      },
+      "slots": {
+        "default": [
+          {
+            "component": "oh-link",
+            "config": {
+              "action": "analyzer",
+              "actionAnalyzerItems": "\u003d[props.windSpeed, props.gustSpeed, props.thirdSpeed].filter(n\u003d\u003en)",
+              "style": {
+                "display": "\u003d(props.showChart\u0026\u0026props.showChart!\u003d\u0027false\u0027)?\u0027block\u0027:\u0027none\u0027",
+                "height": "100%",
+                "position": "absolute",
+                "width": "100%"
+              }
+            }
+          },
+          {
+            "component": "oh-chart",
+            "config": {
+              "height": "\u003dprops.height"
+            },
+            "slots": {
+              "series": [
+                {
+                  "component": "oh-data-series",
+                  "config": {
+                    "emptyCircleStyle": {
+                      "color": "\u003dprops.dialColor"
+                    },
+                    "radius": "72%",
+                    "type": "pie"
+                  }
+                },
+                {
+                  "component": "oh-data-series",
+                  "config": {
+                    "anchor": {
+                      "itemStyle": {
+                        "color": "#000d"
+                      },
+                      "show": "\u003dprops.directionNeedleType \u003d\u003d \u0027classic\u0027",
+                      "size": 20
+                    },
+                    "axisLabel": {
+                      "color": "\u003dprops.dialPrintColor",
+                      "distance": 12,
+                      "fontSize": "\u003dprops.directionFontSize",
+                      "formatter": "\u003dv\u003d\u003e(v\u003d\u003d\u003d360)?\u0027\u0027:v.toFixed(0)+\u0027\u0027"
+                    },
+                    "axisLine": {
+                      "show": false
+                    },
+                    "axisTick": {
+                      "distance": -10,
+                      "length": 10,
+                      "lineStyle": {
+                        "color": "\u003dprops.dialPrintColor"
+                      },
+                      "splitNumber": 6
+                    },
+                    "data": [
+                      {
+                        "itemStyle": {
+                          "color": "\u003dprops.directionNeedleColor"
+                        },
+                        "name": "\u003dprops.title",
+                        "value": "\u003dNumber.parseFloat(items[props.directionItem].state)"
+                      }
+                    ],
+                    "detail": {
+                      "backgroundColor": "rgb(137,150,96)",
+                      "borderColor": "#000",
+                      "borderWidth": 1,
+                      "color": "#000",
+                      "fontFamily": "Courier New",
+                      "fontSize": "\u003dprops.lcdFontSize",
+                      "fontWeight": 600,
+                      "formatter": "\u003dv\u003d\u003eprops.lcdContent !\u003d \u0027abbrev\u0027 ? v.toFixed(0)+\u0027°\u0027 : Number.isNaN(Number.parseFloat(v)) ? \u0027N/A\u0027 : (props.directionAbbreviations.split(\u0027,\u0027)[Math.round((v % 360) / 22.5)]).trim()",
+                      "offsetCenter": [
+                        0,
+                        "35%"
+                      ],
+                      "padding": [
+                        0,
+                        2,
+                        0,
+                        3
+                      ],
+                      "show": "\u003dprops.showLCD",
+                      "valueAnimation": true,
+                      "width": "50%"
+                    },
+                    "endAngle": -270,
+                    "max": "\u003d 360",
+                    "min": "\u003d 0",
+                    "pointer": {
+                      "icon": "path://m 2090.3691,735.29358 v 0 c -1.1198,0 -2.0399,-0.8841 -2.0847,-2.003 l -9.052,-27.674 6.8228,-4.1237 c 0,0 0.4027,-62.9973 -10e-5,-69.1273 -0.4647,-7.07141 -6.1978,-17.0556 -6.1978,-17.0556 l 10.5093,5.5183 10.5095,-5.5183 c 0,0 -5.1712,11.0944 -6.198,17.0556 -0.8201,4.7613 10e-5,69.1275 10e-5,69.1275 l 6.8228,4.12379 -9.052,27.6739 c -0.045,1.1189 -0.9649,2.003 -2.0847,2.003 z",
+                      "itemStyle": {
+                        "shadowBlur": 2,
+                        "shadowColor": "#000a",
+                        "shadowOffsetX": 2,
+                        "shadowOffsetY": 2
+                      },
+                      "keepAspect": false,
+                      "length": "140%",
+                      "offsetCenter": [
+                        0,
+                        "70%"
+                      ],
+                      "show": "\u003dprops.directionNeedleType \u003d\u003d \u0027classic\u0027",
+                      "width": "15%"
+                    },
+                    "radius": "66%",
+                    "splitLine": {
+                      "distance": -10,
+                      "length": 15,
+                      "lineStyle": {
+                        "color": "\u003dprops.dialPrintColor"
+                      }
+                    },
+                    "splitNumber": 12,
+                    "startAngle": 90,
+                    "title": {
+                      "color": "\u003dprops.dialPrintColor",
+                      "offsetCenter": [
+                        0,
+                        "-35%"
+                      ]
+                    },
+                    "tooltip": {
+                      "formatter": "\u003dprops.directionName ? p\u003d\u003eprops.directionName+\u0027: \u003cb\u003e\u0027+p.value.toFixed(1)+\u0027°\u003c/b\u003e\u0027 : NULL",
+                      "valueFormatter": "\u003dv\u003d\u003ev.toFixed(1)+\u0027°\u0027"
+                    },
+                    "type": "gauge"
+                  }
+                },
+                {
+                  "component": "oh-data-series",
+                  "config": {
+                    "anchor": {
+                      "show": false
+                    },
+                    "axisLabel": {
+                      "show": false
+                    },
+                    "axisLine": {
+                      "show": false
+                    },
+                    "axisTick": {
+                      "show": false
+                    },
+                    "data": [
+                      {
+                        "itemStyle": {
+                          "color": "\u003dprops.directionNeedleColor"
+                        },
+                        "name": "\u003dprops.title",
+                        "value": "\u003dNumber.parseFloat(items[props.directionItem].state)"
+                      }
+                    ],
+                    "detail": {
+                      "show": false
+                    },
+                    "endAngle": -270,
+                    "max": "\u003d 360",
+                    "min": "\u003d 0",
+                    "pointer": {
+                      "icon": "path://M 2088.9071,550.56484 C 2085.4538,550.72804 2080.565,551.3281 2080.565,551.3281 L 2088.9071,565.7789 Z M 2091.9069,550.56484 V 565.77787 L 2100.2491,551.3281 C 2100.2491,551.3281 2095.3603,550.72805 2091.9069,550.56484 Z M 2090.39,794.9075 2080.548,777.859 C 2080.548,777.859 2086.9081,781.359 2090.39,781.359 2093.8719,781.359 2100.232,777.859 2100.232,777.859 Z",
+                      "itemStyle": {
+                        "shadowBlur": 1,
+                        "shadowColor": "#000a"
+                      },
+                      "keepAspect": false,
+                      "length": "204%",
+                      "offsetCenter": [
+                        0,
+                        "100%"
+                      ],
+                      "show": "\u003dprops.directionNeedleType \u003d\u003d \u0027modern\u0027",
+                      "width": "17%"
+                    },
+                    "radius": "66%",
+                    "splitLine": {
+                      "show": false
+                    },
+                    "splitNumber": 12,
+                    "startAngle": 90,
+                    "title": {
+                      "show": false
+                    },
+                    "tooltip": {
+                      "formatter": "\u003dprops.directionName ? p\u003d\u003eprops.directionName+\u0027: \u003cb\u003e\u0027+p.value.toFixed(1)+\u0027°\u003c/b\u003e\u0027 : NULL",
+                      "valueFormatter": "\u003dv\u003d\u003ev.toFixed(1)+\u0027°\u0027"
+                    },
+                    "type": "gauge"
+                  }
+                },
+                {
+                  "component": "oh-data-series",
+                  "config": {
+                    "anchor": {
+                      "show": false
+                    },
+                    "axisLabel": {
+                      "color": "\u003dprops.speedPrintColor",
+                      "distance": -13,
+                      "fontSize": "\u003dprops.speedFontSize",
+                      "show": true
+                    },
+                    "axisLine": {
+                      "distance": -50,
+                      "lineStyle": {
+                        "color": [
+                          [
+                            0.03,
+                            "#6271b833"
+                          ],
+                          [
+                            0.08,
+                            "#4a939b33"
+                          ],
+                          [
+                            0.2,
+                            "#52a44633"
+                          ],
+                          [
+                            0.3,
+                            "#a27e4933"
+                          ],
+                          [
+                            0.45,
+                            "#8e405f33"
+                          ],
+                          [
+                            0.55,
+                            "#5f66a044"
+                          ],
+                          [
+                            0.68,
+                            "#5b88a155"
+                          ],
+                          [
+                            0.8,
+                            "#8b48a166"
+                          ],
+                          [
+                            0.9,
+                            "#db489177"
+                          ],
+                          [
+                            1,
+                            "#ff3e4677"
+                          ]
+                        ],
+                        "width": 15
+                      }
+                    },
+                    "axisTick": {
+                      "distance": -15,
+                      "length": 10,
+                      "lineStyle": {
+                        "color": "\u003dprops.speedPrintColor"
+                      },
+                      "show": true,
+                      "splitNumber": "\u003dprops.speedTicks"
+                    },
+                    "data": "\u003d([{\n  \"itemStyle\":{\n    \"color\":(props.windSpeed)?(props.speedNeedleColor):(\u0027#0000\u0027)\n  },\n  \"tooltip\":{\n    \"formatter\":(props.speedName)?(p\u003d\u003eprops.speedName+\u0027:\u003cb\u003e\u0027+p.value.toFixed(1)+\u0027\u003cbr/\u003e\u0027+items[props.windSpeed].state.split(\u0027 \u0027)[1]+\u0027\u003c/b\u003e\u0027):(NULL),\n    \"valueFormatter\":v\u003d\u003ev.toFixed(1)+\u0027 \u0027+items[props.windSpeed].state.split(\u0027 \u0027)[1]\n  },\n  \"value\":Number.parseFloat(items[props.windSpeed].state)\n},{\n  \"itemStyle\":{\n    \"color\":(props.gustSpeed)?(props.gustNeedleColor):(\u0027#0000\u0027)\n  },\n  \"tooltip\":{\n    \"formatter\":(props.gustName)?(p\u003d\u003eprops.gustName+\u0027:\u003cb\u003e\u0027+p.value.toFixed(1)+\u0027\u003cbr/\u003e\u0027+items[props.gustSpeed].state.split(\u0027 \u0027)[1]+\u0027\u003c/b\u003e\u0027):(NULL),\n    \"valueFormatter\":v\u003d\u003ev.toFixed(1)+\u0027 \u0027+items[props.gustSpeed].state.split(\u0027 \u0027)[1]\n  },\n  \"value\":Number.parseFloat(items[props.gustSpeed].state)\n},{\n  \"itemStyle\":{\n    \"color\":(props.thirdSpeed)?(props.thirdNeedleColor):(\u0027#0000\u0027)\n  },\n  \"tooltip\":{\n    \"formatter\":(props.thirdName)?(p\u003d\u003eprops.thirdName+\u0027:\u003cb\u003e\u0027+p.value.toFixed(1)+\u0027\u003cbr/\u003e\u0027+items[props.thirdSpeed].state.split(\u0027 \u0027)[1]+\u0027\u003c/b\u003e\u0027):(NULL),\n    \"valueFormatter\":v\u003d\u003ev.toFixed(1)+\u0027 \u0027+items[props.thirdSpeed].state.split(\u0027 \u0027)[1]\n  },\n  \"value\":Number.parseFloat(items[props.thirdSpeed].state)\n}]).slice(0,(props.gustSpeed)?((props.thirdSpeed)?(3):(2)):(1))\n",
+                    "detail": {
+                      "show": false
+                    },
+                    "max": "\u003dprops.maxSpeed",
+                    "min": 0,
+                    "pointer": {
+                      "icon": "path://m 2090.3649,683.53 v 0 c 1.1198,0 2.0399,0.8841 2.0847,2.003 0,0 3.7674,21.9508 9.052,31.5197 3.4895,6.3185 14.4324,16.1431 14.4324,16.1431 0,0 -17.0158,2.098 -25.5666,2.098 -8.5511,0 -25.5674,-2.0981 -25.5674,-2.0981 0,0 10.9434,-9.8247 14.433,-16.1433 5.2847,-9.5689 9.052,-31.5196 9.052,-31.5196 0.045,-1.1189 0.9649,-2.003 2.0847,-2.003 z",
+                      "itemStyle": {
+                        "shadowBlur": 2,
+                        "shadowColor": "#000a",
+                        "shadowOffsetX": 2,
+                        "shadowOffsetY": 2
+                      },
+                      "keepAspect": true,
+                      "length": "100%",
+                      "offsetCenter": [
+                        0,
+                        "-40%"
+                      ],
+                      "show": "\u003dprops.speedNeedleType\u003d\u003d\u0027classic\u0027",
+                      "width": "13%"
+                    },
+                    "radius": "88%",
+                    "splitLine": {
+                      "distance": -15,
+                      "length": 12,
+                      "lineStyle": {
+                        "color": "\u003dprops.speedPrintColor"
+                      }
+                    },
+                    "splitNumber": "\u003dprops.speedSplits || 10",
+                    "title": {
+                      "show": false
+                    },
+                    "type": "gauge"
+                  }
+                },
+                {
+                  "component": "oh-data-series",
+                  "config": {
+                    "anchor": {
+                      "show": false
+                    },
+                    "axisLabel": {
+                      "show": false
+                    },
+                    "axisLine": {
+                      "show": false
+                    },
+                    "axisTick": {
+                      "show": false
+                    },
+                    "data": "\u003d([{\n  \"itemStyle\":{\n    \"color\":(props.windSpeed)?(props.speedNeedleColor):(\u0027#0000\u0027)\n  },\n  \"tooltip\":{\n    \"formatter\":(props.speedName)?(p\u003d\u003eprops.speedName+\u0027:\u003cb\u003e\u0027+p.value.toFixed(1)+\u0027\u003cbr/\u003e\u0027+items[props.windSpeed].state.split(\u0027 \u0027)[1]+\u0027\u003c/b\u003e\u0027):(NULL),\n    \"valueFormatter\":v\u003d\u003ev.toFixed(1)+\u0027 \u0027+items[props.windSpeed].state.split(\u0027 \u0027)[1]\n  },\n  \"value\":Number.parseFloat(items[props.windSpeed].state)\n},{\n  \"itemStyle\":{\n    \"color\":(props.gustSpeed)?(props.gustNeedleColor):(\u0027#0000\u0027)\n  },\n  \"tooltip\":{\n    \"formatter\":(props.gustName)?(p\u003d\u003eprops.gustName+\u0027:\u003cb\u003e\u0027+p.value.toFixed(1)+\u0027\u003cbr/\u003e\u0027+items[props.gustSpeed].state.split(\u0027 \u0027)[1]+\u0027\u003c/b\u003e\u0027):(NULL),\n    \"valueFormatter\":v\u003d\u003ev.toFixed(1)+\u0027 \u0027+items[props.gustSpeed].state.split(\u0027 \u0027)[1]\n  },\n  \"value\":Number.parseFloat(items[props.gustSpeed].state)\n},{\n  \"itemStyle\":{\n    \"color\":(props.thirdSpeed)?(props.thirdNeedleColor):(\u0027#0000\u0027)\n  },\n  \"tooltip\":{\n    \"formatter\":(props.thirdName)?(p\u003d\u003eprops.thirdName+\u0027:\u003cb\u003e\u0027+p.value.toFixed(1)+\u0027\u003cbr/\u003e\u0027+items[props.thirdSpeed].state.split(\u0027 \u0027)[1]+\u0027\u003c/b\u003e\u0027):(NULL),\n    \"valueFormatter\":v\u003d\u003ev.toFixed(1)+\u0027 \u0027+items[props.thirdSpeed].state.split(\u0027 \u0027)[1]\n  },\n  \"value\":Number.parseFloat(items[props.thirdSpeed].state)\n}]).slice(0,(props.gustSpeed)?((props.thirdSpeed)?(3):(2)):(1))\n",
+                    "detail": {
+                      "show": false
+                    },
+                    "max": "\u003dprops.maxSpeed",
+                    "min": 0,
+                    "pointer": {
+                      "icon": "path://M 2090.39,693.12896 2114.0108,734.04512 C 2114.0108,734.04512 2098.7466,725.64512 2090.39,725.64512 2082.0334,725.64512 2066.7692,734.04512 2066.7692,734.04512 Z",
+                      "itemStyle": {
+                        "shadowBlur": 1,
+                        "shadowColor": "#000a"
+                      },
+                      "keepAspect": true,
+                      "length": "100%",
+                      "offsetCenter": [
+                        0,
+                        "-43%"
+                      ],
+                      "show": "\u003dprops.speedNeedleType\u003d\u003d\u0027modern\u0027",
+                      "width": "12%"
+                    },
+                    "radius": "88%",
+                    "splitLine": {
+                      "show": false
+                    },
+                    "splitNumber": "\u003dprops.speedSplits || 10",
+                    "title": {
+                      "show": false
+                    },
+                    "type": "gauge"
+                  }
+                },
+                {
+                  "component": "oh-data-series",
+                  "config": {
+                    "anchor": {
+                      "itemStyle": {
+                        "color": "\u003dprops.directionNeedleColor",
+                        "shadowBlur": 0
+                      },
+                      "show": "\u003dprops.directionNeedleType \u003d\u003d \u0027classic\u0027",
+                      "showAbove": true,
+                      "size": 16
+                    },
+                    "axisLabel": {
+                      "show": false
+                    },
+                    "axisLine": {
+                      "lineStyle": {
+                        "color": [
+                          [
+                            1,
+                            "\u003dprops.frameColor"
+                          ]
+                        ],
+                        "shadowBlur": "\u003dprops.frameShadowBlur",
+                        "shadowColor": "\u003dprops.frameShadowColor",
+                        "width": 8
+                      },
+                      "show": true
+                    },
+                    "axisTick": {
+                      "show": false
+                    },
+                    "detail": {
+                      "show": false
+                    },
+                    "endAngle": -270,
+                    "pointer": {
+                      "show": false
+                    },
+                    "radius": "75%",
+                    "splitLine": {
+                      "show": false
+                    },
+                    "title": {
+                      "show": false
+                    },
+                    "type": "gauge"
+                  }
+                }
+              ],
+              "tooltip": [
+                {
+                  "component": "oh-chart-tooltip",
+                  "config": {
+                    "show": true
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

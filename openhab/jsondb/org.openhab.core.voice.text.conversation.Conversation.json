@@ -1,0 +1,92 @@
+{
+  "ui-17-78": {
+    "class": "org.openhab.core.voice.internal.text.conversation.PersistedConversationDTO",
+    "value": {
+      "id": "ui-17-78",
+      "createdAt": "2026-08-17T01:31:38.362867947Z",
+      "lastUpdated": "2026-08-17T01:33:42.634145563Z",
+      "messages": [
+        {
+          "id": 0,
+          "role": "USER",
+          "content": "Turn on the living room light"
+        },
+        {
+          "id": 1,
+          "role": "TOOL_CALL",
+          "content": "{\"id\":\"call_2267329\",\"thoughtSignature\":\"ErAFCq0FARFNMg+icF2du0DlU5HVZsjPBGnoCjqoDe82JE2YfMri+TgfJPh5wpaDpty326WkgoINuuzE36xOb0+u9cDtSkwfbg0GbXuQcLLfdhx2shBAcyb6QXy3OXHfuYgTB+IvC4UKd+/GMjtBOzLxl/wrT8FLi1KZIy25N8UKJM1pp1n6wWQOWDMHTjwF/ImPcKLyHlkavxn6aiQlTlfiYgpmJQaRShzJwbV1gmWLAfebfbVb/JSC0nqPfr66ehSiYYKe5FhIxvmRxQg1VPjW4afQaBtZbZVD7uP2lXyb0cG8/MLYRDslRJMmGWnQezf06NenbQ/PeJWgIws8aPbjchRm257nHz12+xW45Cu7czrS+GgADWKm5MKfc3Lz5RyrV1PpmH1rS8kFInP8fBT7hhFWAfScusE9QKoguo3NKbSFlYBKsCUfN9oqBjdUm/JAN9EaXPkQpnGXVjLx3v5uM19b0PTL/bE290wiQr0lck0WmXjzT20a04K7mhNR5zsZvM+KQbH/mKHwRdD2X2HyEk9JNEsnHFt76hwwt3xkahS510JhZPLWb8z15uccQZk3DOTkjL2JPH459w5iuZR+3xLFwFsjHyaJRfeWAEwmkx7XSyj1cDHLxCG5njQ/QovgOK2rUeG7MCRLOtOygeS92GWfD88FU1+eDt5abWKUv0w4uHyQ197xZE6drmu6YRh+qlF5VhSH5oKOKwVZgJ7fddltbNYTxLT3S5qfJ2+pwnwpnEtTBGEfsSFcdGXjP+jmFGZlGt654OBxe7feATdnDW1JWGbuvDm7cdAqs/Hw8E6C5cBaboyIwnHAxjVfQyQoJwu0FExdbFGjmgeX0SR/kT4EENGX6NHdeoe13j9mTeqC8BZdoZg7KFEivBsW9WnVcF/O/KkfUVW/Pg8bWaZNhw\\u003d\\u003d\",\"tool\":\"item-send-command\",\"params\":{\"command\":\"ON\",\"itemName\":\"ESP32_Den_LED\"}}"
+        },
+        {
+          "id": 2,
+          "role": "TOOL_RETURN",
+          "content": "Successfully sent command \u0027ON\u0027 to item \u0027ESP32_Den_LED\u0027."
+        },
+        {
+          "id": 3,
+          "role": "OPENHAB",
+          "content": "I\u0027ve turned on the living room light."
+        },
+        {
+          "id": 4,
+          "role": "USER",
+          "content": "nhiệt độ hiện tại là bao nhiêu"
+        },
+        {
+          "id": 5,
+          "role": "TOOL_CALL",
+          "content": "{\"id\":\"call_2813693\",\"thoughtSignature\":\"EpcDCpQDARFNMg+7SUtiLypcHTiu1/YyvUB9tW06GwoyV7OXNXXSunxYzefFWXpl7by86yWzuic/N/DTgLePpwpI23RQuXUqZwOeEva21pTGo5MahBF0r9ycWIqf7AKnh01+9ChyX2GJl/8BPqOOQ1tbVn1/SKsDePSY4qfOlcz7N3MX/sLx/6iP20YP7HFn0Zqued3HHMHmoaQY7SGdq3BdzGqxIXDRWVZFldSSwwDL+hkoVfk3vDTmYdwqIdEDfxSSreZTGGEW3tyrPqHJhwzehtsFV0d3kf1fpHr0vepS815rQpV2E8/k3V8Ol3UodA/UZUjQwcCCz4NJHRudD9SeRe27dnORkh4YjdOPReoENbF/Q2I6nJmdkmezucb3trBk9Mj+n8bInZHzYxnaIePYGxMsZ8kX307ppVX/Gj10kwyzjO3LxAwyFEpgZvbcMYw1rqZAjO5sA61PiLBH1q31l1BDlF6jFJ8OjG0S2Hhx5M8QdtzD/swi2X4MxWNGQqNAoxWhQNMpcC2y78TOYXAhqjOJo6m2E9U\\u003d\",\"tool\":\"item-get-state\",\"params\":{\"itemName\":\"Nhiet_Do\"}}"
+        },
+        {
+          "id": 6,
+          "role": "TOOL_RETURN",
+          "content": "26 (26.2)"
+        },
+        {
+          "id": 7,
+          "role": "OPENHAB",
+          "content": "Nhiệt độ hiện tại là 26.2 °C."
+        },
+        {
+          "id": 8,
+          "role": "USER",
+          "content": "bật đèn phòng ngủ khoảng 70%"
+        },
+        {
+          "id": 9,
+          "role": "TOOL_CALL",
+          "content": "{\"id\":\"call_3375206\",\"thoughtSignature\":\"Eq0DCqoDARFNMg/Vb+hDMQeJzf7fkWpF3b9bW5JuipTsb42pnq/OxZ8FrvZSqNsOLZtDeyWTNI1a6gAR7x8HSfQLruAMOlSbiw8EKub/GniKHnz/2m9omTeb/2TM2v3E18FY1ljviEKAeqXAA9s/t8IIV2Oj4iEJJhgx0Dhx057HpnqHENvG/Iozit/c+/eZbzhfj2knONz95RCvtviQQMLYcorLB+0gcYmdxjlyZ/atu2cfrGEXzOLtxEkgzYTEeptYRWIHUNzZzZo6dj4JPgiYbBExqimeQPPWahX79Pl8LaNxptNw/cJABAwt2IyCZ2/2VdJxlI/yDdsKRAQEKE4WoHb7+zaqdAfbWdaUgsUrgO9HFpgD8SmlOelMgcPeB1Q9/xzdgb9dLJtdfc8OltLZ3asjI5kftSpc9FPc6n2hhPX4EgRhMOhomiT55Dw2E2JMTdKv2khoO5AnKDZsYqBF84U4wBmGBHLNv2M7p1JXRQIOYUQlxVCEE1JNUnSvAIYKNKypiEbzLmSFovuC2q44Ci/BpElaaiZ1iLBfKet/lmxVUCnjvFP1Uz+vFcHO\",\"tool\":\"item-send-command\",\"params\":{\"itemName\":\"ESP32_Den_LED_phong_ngu\",\"command\":\"70\"}}"
+        },
+        {
+          "id": 10,
+          "role": "TOOL_RETURN",
+          "content": "Successfully sent command \u002770\u0027 to item \u0027ESP32_Den_LED_phong_ngu\u0027."
+        },
+        {
+          "id": 11,
+          "role": "OPENHAB",
+          "content": "Tôi đã bật đèn phòng ngủ lên 70% rồi."
+        },
+        {
+          "id": 12,
+          "role": "USER",
+          "content": "bật bình nóng lạnh lên"
+        },
+        {
+          "id": 13,
+          "role": "TOOL_CALL",
+          "content": "{\"id\":\"call_2749801\",\"thoughtSignature\":\"EvICCu8CARFNMg+9113DZLiyBH1rsQywCz65MuxDyh2Gbrp2BpMC72OCBjBv6OPcdHUEClKJnYgAPmp5RiOYapSEYwkBJPDXVYoCs0SSVQEJpAJN0JrFstduLXauQ3o6lh+FQHCoMxbdD2edQzz1XeGCOm+UM3Zpj9qUlPqecEPT34qh22BW9r9HTG1VygS50/coyoI+UI818f5uHFrzgMyXdlUio8wHzDr1WmnVCTh04/aYrX1/Kq097B5t/DDjrvOTaiMmkWwjNYSJfEfpelHqyWqZBp27TXb/68TBgq8yHNLHxEA3wtSay5Anbi+ny4auRv/QXXXYkNnaM2yhF+oMhRwR+ipKYqZqhPG7MFN4nFx2BK7lVXBfqmhPDUFa/rnnIyfn/MGSA1thjPDW+eeQI35+BtYNYgB5z3Se6D9sM8gMRFHMupYTptxpNi8MsGIeN1jl8Y8EjsYAOWkSXaM1AvCT+aq0T8zRuOZsMUyFKplIKw\\u003d\\u003d\",\"tool\":\"item-send-command\",\"params\":{\"itemName\":\"ESP32_Binh_nong_lanh\",\"command\":\"ON\"}}"
+        },
+        {
+          "id": 14,
+          "role": "TOOL_RETURN",
+          "content": "Successfully sent command \u0027ON\u0027 to item \u0027ESP32_Binh_nong_lanh\u0027."
+        },
+        {
+          "id": 15,
+          "role": "OPENHAB",
+          "content": "Tôi đã bật bình nóng lạnh lên rồi."
+        }
+      ]
+    }
+  }
+}

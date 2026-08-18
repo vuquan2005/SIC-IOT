@@ -1,0 +1,29 @@
+sitemap default label="Hệ Thống Nhà Thông Minh" {
+    Frame label="🛋️ Phòng Khách" {
+        Text item=Nhiet_Do icon="temperature"
+        Text item=Do_Am icon="humidity"
+        Switch item=ESP32_Den_LED icon="light"
+        Slider item=ESP32_Den_LED label="Độ sáng đèn phòng khách [%d %%]" icon="slider"
+    }
+
+    Frame label="🛏️ Phòng Ngủ" {
+        Switch item=ESP32_Den_LED_phong_ngu icon="light"
+        Slider item=ESP32_Den_LED_phong_ngu label="Độ sáng đèn phòng ngủ [%d %%]" icon="slider"
+        Switch item=ESP32_Cua_Tu_Dong label="Cửa phòng ngủ" icon="door" mappings=[ON="MỞ", OFF="ĐÓNG"]
+    }
+
+    Frame label="🚽 Nhà Vệ Sinh" {
+        Switch item=ESP32_Binh_nong_lanh icon="heating" mappings=[ON="BẬT", OFF="TẮT"]
+        Switch item=Flag_Khong_Bat_Binh label="Cờ hủy bật bình 17h" icon="switch"
+    }
+
+    Frame label="📊 Cảm Biến Môi Trường" {
+        Text item=Cam_Bien_Anh_Sang icon="sun" label="Cảm biến ánh sáng [%d]"
+        Text item=Cam_Bien_CHuyen_Dong icon="motion" label="Cảm biến chuyển động [%s]"
+        Text item=Cam_Bien_Khoang_Cach icon="flow" label="Khoảng cách [%.1f cm]"
+    }
+
+    Frame label="🤖 Trợ Lý Ảo Gemini" {
+        Text item=GeminiChat label="Phản hồi Gemini: [%s]" icon="chat"
+    }
+}

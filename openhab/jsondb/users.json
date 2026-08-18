@@ -1,0 +1,293 @@
+{
+  "vuquan": {
+    "class": "org.openhab.core.auth.ManagedUser",
+    "value": {
+      "name": "vuquan",
+      "passwordHash": "X0vfSBJZK7QH5eXTgfQrW7KFJDZ9joL6hlITWSoVI96Qc7TkjSUoNKDM/VknLU00QgOux2gsqRNR29qMHwmWZQ\u003d\u003d",
+      "passwordSalt": "ryxMQRx+OtXpU3gmlZf0el8cLuBUg0lkU9mMINCClUBrBmPgFG69TbidvdbtEFEISztze3Tauqf1SS96alHa9A\u003d\u003d",
+      "roles": [
+        "administrator"
+      ],
+      "sessions": [
+        {
+          "sessionId": "cce108cb-cabf-463c-a819-16f9078091a3",
+          "refreshToken": "5d7f5005b13649f6aca246def9d8cc1f",
+          "createdTime": "Aug 8, 2026, 9:40:03 AM",
+          "lastRefreshTime": "Aug 17, 2026, 8:02:08 AM",
+          "clientId": "http://raspin3.local:8080",
+          "redirectUri": "http://raspin3.local:8080",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "f05832ec-b42d-4544-a3e0-224ff9df9497",
+          "refreshToken": "e5080a86361e4b21820f85d1a3d48af7",
+          "createdTime": "Aug 8, 2026, 10:01:00 AM",
+          "lastRefreshTime": "Aug 8, 2026, 11:41:54 AM",
+          "clientId": "http://raspin3.local:8080",
+          "redirectUri": "http://raspin3.local:8080",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "71325c90-d858-4542-b618-c77139ed7470",
+          "refreshToken": "65a7bbc789bd404d9d20d4a6a2fba030",
+          "createdTime": "Aug 8, 2026, 10:07:55 AM",
+          "lastRefreshTime": "Aug 8, 2026, 10:14:02 AM",
+          "clientId": "http://192.168.100.142:8080",
+          "redirectUri": "http://192.168.100.142:8080",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "3302c89f-831c-4f75-b229-e0e07a4dc916",
+          "refreshToken": "86a9053e60cf46d9be9f461b4b47d183",
+          "createdTime": "Aug 8, 2026, 10:13:57 AM",
+          "lastRefreshTime": "Aug 9, 2026, 10:50:07 PM",
+          "clientId": "http://raspin3.local:8080",
+          "redirectUri": "http://raspin3.local:8080",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "42ea0714-1809-44de-bced-8ca8984552bf",
+          "refreshToken": "06329190c30e4167bb66ca4e4e15a57d",
+          "createdTime": "Aug 8, 2026, 11:25:30 AM",
+          "lastRefreshTime": "Aug 13, 2026, 1:55:59 PM",
+          "clientId": "http://raspin3.local:8080",
+          "redirectUri": "http://raspin3.local:8080",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "08efd131-e27a-484f-9517-823f8a52ebca",
+          "refreshToken": "ad7e2f6f0c6a43c0893f2714553e271c",
+          "createdTime": "Aug 8, 2026, 1:10:47 PM",
+          "lastRefreshTime": "Aug 8, 2026, 1:11:25 PM",
+          "clientId": "https://home.myopenhab.org",
+          "redirectUri": "https://home.myopenhab.org",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "d7e5e759-44c6-4545-8153-f9fa4822e0da",
+          "refreshToken": "628e892542d14ed0ba2cbeb2932a9628",
+          "createdTime": "Aug 8, 2026, 1:18:02 PM",
+          "lastRefreshTime": "Aug 8, 2026, 1:18:02 PM",
+          "clientId": "https://connect.myopenhab.org",
+          "redirectUri": "https://connect.myopenhab.org",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "72af24fd-549a-4716-98d7-0a77a5761a96",
+          "refreshToken": "ae7c22f170e44f52b75c5f947b8c8250",
+          "createdTime": "Aug 8, 2026, 2:46:25 PM",
+          "lastRefreshTime": "Aug 8, 2026, 2:51:23 PM",
+          "clientId": "https://home.myopenhab.org",
+          "redirectUri": "https://home.myopenhab.org",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "32b59b12-9e7f-4242-94a3-b8ce777cfdcf",
+          "refreshToken": "c2877236c2784e19bd58b1d9013fe2cc",
+          "createdTime": "Aug 8, 2026, 2:52:59 PM",
+          "lastRefreshTime": "Aug 8, 2026, 3:15:53 PM",
+          "clientId": "https://connect.myopenhab.org",
+          "redirectUri": "https://connect.myopenhab.org",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "de10179c-902a-4ab4-94c4-cc28fb6ee17e",
+          "refreshToken": "b1141257c8e04e3b846388a72fbbca63",
+          "createdTime": "Aug 8, 2026, 3:35:26 PM",
+          "lastRefreshTime": "Aug 8, 2026, 3:35:26 PM",
+          "clientId": "https://connect.myopenhab.org",
+          "redirectUri": "https://connect.myopenhab.org",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "137a627e-5867-4f7c-8028-4ed57209c503",
+          "refreshToken": "49fbaee1dcf040a2863e9a411d7b8842",
+          "createdTime": "Aug 8, 2026, 4:04:05 PM",
+          "lastRefreshTime": "Aug 8, 2026, 4:04:05 PM",
+          "clientId": "https://connect.myopenhab.org",
+          "redirectUri": "https://connect.myopenhab.org",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "3501195c-560f-4fe2-8e4a-ba4ae9624243",
+          "refreshToken": "c2134d21d0bf4449879ecb1948474bc7",
+          "createdTime": "Aug 9, 2026, 8:12:40 PM",
+          "lastRefreshTime": "Aug 9, 2026, 8:12:40 PM",
+          "clientId": "https://connect.myopenhab.org",
+          "redirectUri": "https://connect.myopenhab.org",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "e166ecd8-fac4-412d-83fb-8a0f72df753a",
+          "refreshToken": "183623641ab74f2faa076495e654b9b0",
+          "createdTime": "Aug 10, 2026, 7:19:53 AM",
+          "lastRefreshTime": "Aug 11, 2026, 8:02:24 PM",
+          "clientId": "https://sic-iot.vuquan.id.vn",
+          "redirectUri": "https://sic-iot.vuquan.id.vn",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "1872303c-bec0-4a9c-a7a6-e3380b9d1690",
+          "refreshToken": "5fce427c8f454706bf4ae982aa77adf7",
+          "createdTime": "Aug 11, 2026, 6:08:08 PM",
+          "lastRefreshTime": "Aug 11, 2026, 8:21:18 PM",
+          "clientId": "https://sic-iot.vuquan.id.vn",
+          "redirectUri": "https://sic-iot.vuquan.id.vn",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "081f3e88-baba-4085-a70c-6dc13219cc35",
+          "refreshToken": "3a9cc9c01152462ea5e3373e5a8dcd54",
+          "createdTime": "Aug 11, 2026, 6:25:55 PM",
+          "lastRefreshTime": "Aug 12, 2026, 11:13:41 PM",
+          "clientId": "https://sic-iot.vuquan.id.vn",
+          "redirectUri": "https://sic-iot.vuquan.id.vn",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "ee3cf266-72e1-48ba-aeec-1947204d6b7d",
+          "refreshToken": "f4936b8c8cc0406fa0f7220da708b545",
+          "createdTime": "Aug 11, 2026, 8:42:38 PM",
+          "lastRefreshTime": "Aug 11, 2026, 8:56:44 PM",
+          "clientId": "https://sic-iot.vuquan.id.vn",
+          "redirectUri": "https://sic-iot.vuquan.id.vn",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "897f45e0-6ce2-4892-addf-a96f5bcde226",
+          "refreshToken": "2655468f65ca450189c0b2c6d12e0739",
+          "createdTime": "Aug 12, 2026, 3:59:51 PM",
+          "lastRefreshTime": "Aug 12, 2026, 7:44:11 PM",
+          "clientId": "https://sic-iot.vuquan.id.vn",
+          "redirectUri": "https://sic-iot.vuquan.id.vn",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "ed794bfd-4798-47f9-8354-852fa11456ad",
+          "refreshToken": "c3210af3be9141cf8e17f503d893f147",
+          "createdTime": "Aug 12, 2026, 4:04:33 PM",
+          "lastRefreshTime": "Aug 13, 2026, 8:27:43 PM",
+          "clientId": "https://sic-iot.vuquan.id.vn",
+          "redirectUri": "https://sic-iot.vuquan.id.vn",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "0a47ca8b-f85f-4632-abc0-5a07ee43396c",
+          "refreshToken": "00bebed4cc3548dda7e306a024df41cf",
+          "createdTime": "Aug 12, 2026, 4:15:25 PM",
+          "lastRefreshTime": "Aug 12, 2026, 6:38:50 PM",
+          "clientId": "https://sic-iot.vuquan.id.vn",
+          "redirectUri": "https://sic-iot.vuquan.id.vn",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "accf67d5-2e4d-4825-920e-1d58d57e9ed8",
+          "refreshToken": "fcda50de49394a96b7ff3aafaa69c24e",
+          "createdTime": "Aug 12, 2026, 6:41:58 PM",
+          "lastRefreshTime": "Aug 12, 2026, 6:41:58 PM",
+          "clientId": "https://sic-iot.vuquan.id.vn",
+          "redirectUri": "https://sic-iot.vuquan.id.vn",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "06d45f8d-6203-4afd-97b8-3e7b77e30dd6",
+          "refreshToken": "8186c63d1b6d451294b711459246924d",
+          "createdTime": "Aug 12, 2026, 8:06:13 PM",
+          "lastRefreshTime": "Aug 12, 2026, 8:06:13 PM",
+          "clientId": "https://sic-iot.vuquan.id.vn",
+          "redirectUri": "https://sic-iot.vuquan.id.vn",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "327abe9f-5c7d-4b43-91aa-094c7c8da91e",
+          "refreshToken": "17061d143c1744f58211a426fbc952c2",
+          "createdTime": "Aug 13, 2026, 3:20:12 PM",
+          "lastRefreshTime": "Aug 17, 2026, 8:07:57 AM",
+          "clientId": "https://sic-iot.vuquan.id.vn",
+          "redirectUri": "https://sic-iot.vuquan.id.vn",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "82508b8f-9a88-4dac-af1d-ab4f64c340c8",
+          "refreshToken": "83572c63914a48118a4416447ca4477b",
+          "createdTime": "Aug 13, 2026, 4:54:54 PM",
+          "lastRefreshTime": "Aug 13, 2026, 4:54:54 PM",
+          "clientId": "https://connect.myopenhab.org",
+          "redirectUri": "https://connect.myopenhab.org",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "fdddfd05-876c-45f4-bf88-b51d4f1fc92d",
+          "refreshToken": "e453826ee31649b89ac41c17222ffd9c",
+          "createdTime": "Aug 13, 2026, 6:20:07 PM",
+          "lastRefreshTime": "Aug 13, 2026, 6:20:07 PM",
+          "clientId": "https://sic-iot.vuquan.id.vn",
+          "redirectUri": "https://sic-iot.vuquan.id.vn",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "f80f5b0a-994e-4e14-a49d-661810bb4deb",
+          "refreshToken": "37a5bd5e284e480292b241fb9728486f",
+          "createdTime": "Aug 13, 2026, 6:20:18 PM",
+          "lastRefreshTime": "Aug 13, 2026, 8:28:15 PM",
+          "clientId": "https://sic-iot.vuquan.id.vn",
+          "redirectUri": "https://sic-iot.vuquan.id.vn",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "e85b0dbb-c193-43bc-87e8-b9c4451d39d1",
+          "refreshToken": "6343a80d7199464597ce7be09c9dc637",
+          "createdTime": "Aug 17, 2026, 8:20:27 AM",
+          "lastRefreshTime": "Aug 17, 2026, 9:17:28 AM",
+          "clientId": "https://sic-iot.vuquan.id.vn",
+          "redirectUri": "https://sic-iot.vuquan.id.vn",
+          "scope": "admin",
+          "sessionCookie": true
+        },
+        {
+          "sessionId": "35831aa3-7239-4cbd-ba35-122ed6e6f39d",
+          "refreshToken": "ece36b55ac0d4236bf44694a7ea26b81",
+          "createdTime": "Aug 18, 2026, 12:49:42 AM",
+          "lastRefreshTime": "Aug 18, 2026, 12:49:42 AM",
+          "clientId": "http://raspin3.local:8080",
+          "redirectUri": "http://raspin3.local:8080",
+          "scope": "admin",
+          "sessionCookie": true
+        }
+      ],
+      "apiTokens": [
+        {
+          "name": "py",
+          "apiToken": "xa457YXUve4nmk2GbCAvyqPUkO2MDs8qEeApEmFOwb1+eDt1Zf5a2Mcco72EjekxRHlteZWdfMD+44Cj7uTwFA\u003d\u003d:ajTMHnYXIaa14B9ihl5V8GBrvmnkgo2YhDjBMLeoHxWjim1Jd+WBNisZHUXtAkrIPaaTFicwWmdrtmNcX3EALg\u003d\u003d",
+          "createdTime": "Aug 11, 2026, 8:12:50 PM",
+          "scope": ""
+        }
+      ]
+    }
+  }
+}

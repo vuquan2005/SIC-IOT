@@ -1,0 +1,2088 @@
+{
+  "astro:moon:local": {
+    "class": "org.openhab.core.thing.internal.ThingStorageEntity",
+    "value": {
+      "isBridge": false,
+      "channels": [
+        {
+          "uid": "astro:moon:local:rise#start",
+          "id": "rise#start",
+          "channelTypeUID": "astro:start",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Start Time",
+          "description": "The start time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:moon:local:rise#end",
+          "id": "rise#end",
+          "channelTypeUID": "astro:end",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "End Time",
+          "description": "The end time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:moon:local:rise#event",
+          "id": "rise#event",
+          "channelTypeUID": "astro:rangeEvent",
+          "kind": "TRIGGER",
+          "label": "Range Event",
+          "description": "Range event",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:moon:local:set#start",
+          "id": "set#start",
+          "channelTypeUID": "astro:start",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Start Time",
+          "description": "The start time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:moon:local:set#end",
+          "id": "set#end",
+          "channelTypeUID": "astro:end",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "End Time",
+          "description": "The end time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:moon:local:set#event",
+          "id": "set#event",
+          "channelTypeUID": "astro:rangeEvent",
+          "kind": "TRIGGER",
+          "label": "Range Event",
+          "description": "Range event",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:moon:local:phase#firstQuarter",
+          "id": "phase#firstQuarter",
+          "channelTypeUID": "astro:firstQuarter",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "First Quarter",
+          "description": "The DateTime the moon is in the first quarter",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:moon:local:phase#thirdQuarter",
+          "id": "phase#thirdQuarter",
+          "channelTypeUID": "astro:thirdQuarter",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Third Quarter",
+          "description": "The DateTime the moon is in the third quarter",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:moon:local:phase#full",
+          "id": "phase#full",
+          "channelTypeUID": "astro:fullMoon",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Full Moon",
+          "description": "The DateTime for full moon",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:moon:local:phase#new",
+          "id": "phase#new",
+          "channelTypeUID": "astro:newMoon",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "New Moon",
+          "description": "The DateTime for new moon",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:moon:local:phase#age",
+          "id": "phase#age",
+          "channelTypeUID": "astro:age",
+          "itemType": "Number:Time",
+          "kind": "STATE",
+          "label": "Moon Age",
+          "description": "The age of the moon",
+          "defaultTags": [
+            "Calculation",
+            "Duration"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:moon:local:phase#ageDegree",
+          "id": "phase#ageDegree",
+          "channelTypeUID": "astro:ageDegree",
+          "itemType": "Number:Angle",
+          "kind": "STATE",
+          "label": "Moon Age",
+          "description": "The age of the moon",
+          "defaultTags": [
+            "Calculation"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:moon:local:phase#agePercent",
+          "id": "phase#agePercent",
+          "channelTypeUID": "astro:agePercent",
+          "itemType": "Number:Dimensionless",
+          "kind": "STATE",
+          "label": "Moon Age",
+          "description": "The age of the moon",
+          "defaultTags": [
+            "Calculation"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:moon:local:phase#illumination",
+          "id": "phase#illumination",
+          "channelTypeUID": "astro:illumination",
+          "itemType": "Number:Dimensionless",
+          "kind": "STATE",
+          "label": "Moon Illumination",
+          "description": "The illumination of the moon",
+          "defaultTags": [
+            "Calculation"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:moon:local:phase#name",
+          "id": "phase#name",
+          "channelTypeUID": "astro:phaseName",
+          "itemType": "String",
+          "kind": "STATE",
+          "label": "Moon Phase Name",
+          "description": "The name of the current moon phase",
+          "defaultTags": [
+            "Status"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:moon:local:phase#event",
+          "id": "phase#event",
+          "channelTypeUID": "astro:phaseEvent",
+          "kind": "TRIGGER",
+          "label": "Moon Phase Event",
+          "description": "Moon phase event",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:moon:local:eclipse#total",
+          "id": "eclipse#total",
+          "channelTypeUID": "astro:total",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Total Moon Eclipse",
+          "description": "Timestamp of the next total moon eclipse",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:moon:local:eclipse#totalElevation",
+          "id": "eclipse#totalElevation",
+          "channelTypeUID": "astro:elevation",
+          "itemType": "Number:Angle",
+          "kind": "STATE",
+          "label": "Elevation",
+          "description": "The elevation of the planet",
+          "defaultTags": [
+            "Calculation"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:moon:local:eclipse#partial",
+          "id": "eclipse#partial",
+          "channelTypeUID": "astro:partial",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Partial Moon Eclipse",
+          "description": "Timestamp of the next partial moon eclipse",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:moon:local:eclipse#partialElevation",
+          "id": "eclipse#partialElevation",
+          "channelTypeUID": "astro:elevation",
+          "itemType": "Number:Angle",
+          "kind": "STATE",
+          "label": "Elevation",
+          "description": "The elevation of the planet",
+          "defaultTags": [
+            "Calculation"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:moon:local:eclipse#event",
+          "id": "eclipse#event",
+          "channelTypeUID": "astro:moonEclipseEvent",
+          "kind": "TRIGGER",
+          "label": "Moon Eclipse Event",
+          "description": "Moon eclipse event",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:moon:local:distance#date",
+          "id": "distance#date",
+          "channelTypeUID": "astro:distanceDate",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Date",
+          "description": "The DateTime when the distance is reached",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:moon:local:distance#distance",
+          "id": "distance#distance",
+          "channelTypeUID": "astro:distance",
+          "itemType": "Number:Length",
+          "kind": "STATE",
+          "label": "Distance",
+          "description": "The distance of the object",
+          "defaultTags": [
+            "Calculation"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:moon:local:distance#event",
+          "id": "distance#event",
+          "channelTypeUID": "astro:distanceEvent",
+          "kind": "TRIGGER",
+          "label": "Moon Distance Event",
+          "description": "Moon distance event",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:moon:local:perigee#date",
+          "id": "perigee#date",
+          "channelTypeUID": "astro:distanceDate",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Date",
+          "description": "The DateTime when the distance is reached",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:moon:local:perigee#distance",
+          "id": "perigee#distance",
+          "channelTypeUID": "astro:distance",
+          "itemType": "Number:Length",
+          "kind": "STATE",
+          "label": "Distance",
+          "description": "The distance of the object",
+          "defaultTags": [
+            "Calculation"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:moon:local:perigee#event",
+          "id": "perigee#event",
+          "channelTypeUID": "astro:distanceEvent",
+          "kind": "TRIGGER",
+          "label": "Moon Distance Event",
+          "description": "Moon distance event",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:moon:local:apogee#date",
+          "id": "apogee#date",
+          "channelTypeUID": "astro:distanceDate",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Date",
+          "description": "The DateTime when the distance is reached",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:moon:local:apogee#distance",
+          "id": "apogee#distance",
+          "channelTypeUID": "astro:distance",
+          "itemType": "Number:Length",
+          "kind": "STATE",
+          "label": "Distance",
+          "description": "The distance of the object",
+          "defaultTags": [
+            "Calculation"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:moon:local:apogee#event",
+          "id": "apogee#event",
+          "channelTypeUID": "astro:distanceEvent",
+          "kind": "TRIGGER",
+          "label": "Moon Distance Event",
+          "description": "Moon distance event",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:moon:local:position#azimuth",
+          "id": "position#azimuth",
+          "channelTypeUID": "astro:azimuth",
+          "itemType": "Number:Angle",
+          "kind": "STATE",
+          "label": "Azimuth",
+          "description": "The azimuth of the planet",
+          "defaultTags": [
+            "Calculation"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:moon:local:position#elevation",
+          "id": "position#elevation",
+          "channelTypeUID": "astro:elevation",
+          "itemType": "Number:Angle",
+          "kind": "STATE",
+          "label": "Elevation",
+          "description": "The elevation of the planet",
+          "defaultTags": [
+            "Calculation"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:moon:local:position#shadeLength",
+          "id": "position#shadeLength",
+          "channelTypeUID": "astro:shadeLength",
+          "itemType": "Number",
+          "kind": "STATE",
+          "label": "Shade Length Ratio",
+          "description": "Projected shade length ratio (derived from Elevation)",
+          "defaultTags": [
+            "Calculation"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:moon:local:zodiac#sign",
+          "id": "zodiac#sign",
+          "channelTypeUID": "astro:sign",
+          "itemType": "String",
+          "kind": "STATE",
+          "label": "Sign",
+          "description": "The sign of the zodiac",
+          "defaultTags": [
+            "Info",
+            "Status"
+          ],
+          "properties": {},
+          "configuration": {}
+        }
+      ],
+      "label": "Local Moon",
+      "configuration": {
+        "geolocation": "21.053879,105.735820",
+        "interval": 300
+      },
+      "properties": {},
+      "UID": "astro:moon:local",
+      "thingTypeUID": "astro:moon",
+      "semanticEquipmentTag": "Application"
+    }
+  },
+  "astro:sun:local": {
+    "class": "org.openhab.core.thing.internal.ThingStorageEntity",
+    "value": {
+      "isBridge": false,
+      "channels": [
+        {
+          "uid": "astro:sun:local:rise#start",
+          "id": "rise#start",
+          "channelTypeUID": "astro:start",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Start Time",
+          "description": "The start time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:rise#end",
+          "id": "rise#end",
+          "channelTypeUID": "astro:end",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "End Time",
+          "description": "The end time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:rise#duration",
+          "id": "rise#duration",
+          "channelTypeUID": "astro:duration",
+          "itemType": "Number:Time",
+          "kind": "STATE",
+          "label": "Duration",
+          "description": "The duration of the event",
+          "defaultTags": [
+            "Calculation",
+            "Duration"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:rise#event",
+          "id": "rise#event",
+          "channelTypeUID": "astro:rangeEvent",
+          "kind": "TRIGGER",
+          "label": "Range Event",
+          "description": "Range event",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:set#start",
+          "id": "set#start",
+          "channelTypeUID": "astro:start",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Start Time",
+          "description": "The start time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:set#end",
+          "id": "set#end",
+          "channelTypeUID": "astro:end",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "End Time",
+          "description": "The end time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:set#duration",
+          "id": "set#duration",
+          "channelTypeUID": "astro:duration",
+          "itemType": "Number:Time",
+          "kind": "STATE",
+          "label": "Duration",
+          "description": "The duration of the event",
+          "defaultTags": [
+            "Calculation",
+            "Duration"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:set#event",
+          "id": "set#event",
+          "channelTypeUID": "astro:rangeEvent",
+          "kind": "TRIGGER",
+          "label": "Range Event",
+          "description": "Range event",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:noon#start",
+          "id": "noon#start",
+          "channelTypeUID": "astro:start",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Start Time",
+          "description": "The start time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:noon#end",
+          "id": "noon#end",
+          "channelTypeUID": "astro:end",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "End Time",
+          "description": "The end time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:noon#duration",
+          "id": "noon#duration",
+          "channelTypeUID": "astro:duration",
+          "itemType": "Number:Time",
+          "kind": "STATE",
+          "label": "Duration",
+          "description": "The duration of the event",
+          "defaultTags": [
+            "Calculation",
+            "Duration"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:noon#event",
+          "id": "noon#event",
+          "channelTypeUID": "astro:rangeEvent",
+          "kind": "TRIGGER",
+          "label": "Range Event",
+          "description": "Range event",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:night#start",
+          "id": "night#start",
+          "channelTypeUID": "astro:start",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Start Time",
+          "description": "The start time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:night#end",
+          "id": "night#end",
+          "channelTypeUID": "astro:end",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "End Time",
+          "description": "The end time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:night#duration",
+          "id": "night#duration",
+          "channelTypeUID": "astro:duration",
+          "itemType": "Number:Time",
+          "kind": "STATE",
+          "label": "Duration",
+          "description": "The duration of the event",
+          "defaultTags": [
+            "Calculation",
+            "Duration"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:night#event",
+          "id": "night#event",
+          "channelTypeUID": "astro:rangeEvent",
+          "kind": "TRIGGER",
+          "label": "Range Event",
+          "description": "Range event",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:morningNight#start",
+          "id": "morningNight#start",
+          "channelTypeUID": "astro:start",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Start Time",
+          "description": "The start time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:morningNight#end",
+          "id": "morningNight#end",
+          "channelTypeUID": "astro:end",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "End Time",
+          "description": "The end time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:morningNight#duration",
+          "id": "morningNight#duration",
+          "channelTypeUID": "astro:duration",
+          "itemType": "Number:Time",
+          "kind": "STATE",
+          "label": "Duration",
+          "description": "The duration of the event",
+          "defaultTags": [
+            "Calculation",
+            "Duration"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:morningNight#event",
+          "id": "morningNight#event",
+          "channelTypeUID": "astro:rangeEvent",
+          "kind": "TRIGGER",
+          "label": "Range Event",
+          "description": "Range event",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:astroDawn#start",
+          "id": "astroDawn#start",
+          "channelTypeUID": "astro:start",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Start Time",
+          "description": "The start time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:astroDawn#end",
+          "id": "astroDawn#end",
+          "channelTypeUID": "astro:end",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "End Time",
+          "description": "The end time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:astroDawn#duration",
+          "id": "astroDawn#duration",
+          "channelTypeUID": "astro:duration",
+          "itemType": "Number:Time",
+          "kind": "STATE",
+          "label": "Duration",
+          "description": "The duration of the event",
+          "defaultTags": [
+            "Calculation",
+            "Duration"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:astroDawn#event",
+          "id": "astroDawn#event",
+          "channelTypeUID": "astro:rangeEvent",
+          "kind": "TRIGGER",
+          "label": "Range Event",
+          "description": "Range event",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:nauticDawn#start",
+          "id": "nauticDawn#start",
+          "channelTypeUID": "astro:start",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Start Time",
+          "description": "The start time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:nauticDawn#end",
+          "id": "nauticDawn#end",
+          "channelTypeUID": "astro:end",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "End Time",
+          "description": "The end time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:nauticDawn#duration",
+          "id": "nauticDawn#duration",
+          "channelTypeUID": "astro:duration",
+          "itemType": "Number:Time",
+          "kind": "STATE",
+          "label": "Duration",
+          "description": "The duration of the event",
+          "defaultTags": [
+            "Calculation",
+            "Duration"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:nauticDawn#event",
+          "id": "nauticDawn#event",
+          "channelTypeUID": "astro:rangeEvent",
+          "kind": "TRIGGER",
+          "label": "Range Event",
+          "description": "Range event",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:civilDawn#start",
+          "id": "civilDawn#start",
+          "channelTypeUID": "astro:start",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Start Time",
+          "description": "The start time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:civilDawn#end",
+          "id": "civilDawn#end",
+          "channelTypeUID": "astro:end",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "End Time",
+          "description": "The end time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:civilDawn#duration",
+          "id": "civilDawn#duration",
+          "channelTypeUID": "astro:duration",
+          "itemType": "Number:Time",
+          "kind": "STATE",
+          "label": "Duration",
+          "description": "The duration of the event",
+          "defaultTags": [
+            "Calculation",
+            "Duration"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:civilDawn#event",
+          "id": "civilDawn#event",
+          "channelTypeUID": "astro:rangeEvent",
+          "kind": "TRIGGER",
+          "label": "Range Event",
+          "description": "Range event",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:astroDusk#start",
+          "id": "astroDusk#start",
+          "channelTypeUID": "astro:start",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Start Time",
+          "description": "The start time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:astroDusk#end",
+          "id": "astroDusk#end",
+          "channelTypeUID": "astro:end",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "End Time",
+          "description": "The end time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:astroDusk#duration",
+          "id": "astroDusk#duration",
+          "channelTypeUID": "astro:duration",
+          "itemType": "Number:Time",
+          "kind": "STATE",
+          "label": "Duration",
+          "description": "The duration of the event",
+          "defaultTags": [
+            "Calculation",
+            "Duration"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:astroDusk#event",
+          "id": "astroDusk#event",
+          "channelTypeUID": "astro:rangeEvent",
+          "kind": "TRIGGER",
+          "label": "Range Event",
+          "description": "Range event",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:nauticDusk#start",
+          "id": "nauticDusk#start",
+          "channelTypeUID": "astro:start",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Start Time",
+          "description": "The start time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:nauticDusk#end",
+          "id": "nauticDusk#end",
+          "channelTypeUID": "astro:end",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "End Time",
+          "description": "The end time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:nauticDusk#duration",
+          "id": "nauticDusk#duration",
+          "channelTypeUID": "astro:duration",
+          "itemType": "Number:Time",
+          "kind": "STATE",
+          "label": "Duration",
+          "description": "The duration of the event",
+          "defaultTags": [
+            "Calculation",
+            "Duration"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:nauticDusk#event",
+          "id": "nauticDusk#event",
+          "channelTypeUID": "astro:rangeEvent",
+          "kind": "TRIGGER",
+          "label": "Range Event",
+          "description": "Range event",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:civilDusk#start",
+          "id": "civilDusk#start",
+          "channelTypeUID": "astro:start",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Start Time",
+          "description": "The start time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:civilDusk#end",
+          "id": "civilDusk#end",
+          "channelTypeUID": "astro:end",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "End Time",
+          "description": "The end time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:civilDusk#duration",
+          "id": "civilDusk#duration",
+          "channelTypeUID": "astro:duration",
+          "itemType": "Number:Time",
+          "kind": "STATE",
+          "label": "Duration",
+          "description": "The duration of the event",
+          "defaultTags": [
+            "Calculation",
+            "Duration"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:civilDusk#event",
+          "id": "civilDusk#event",
+          "channelTypeUID": "astro:rangeEvent",
+          "kind": "TRIGGER",
+          "label": "Range Event",
+          "description": "Range event",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:eveningNight#start",
+          "id": "eveningNight#start",
+          "channelTypeUID": "astro:start",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Start Time",
+          "description": "The start time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:eveningNight#end",
+          "id": "eveningNight#end",
+          "channelTypeUID": "astro:end",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "End Time",
+          "description": "The end time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:eveningNight#duration",
+          "id": "eveningNight#duration",
+          "channelTypeUID": "astro:duration",
+          "itemType": "Number:Time",
+          "kind": "STATE",
+          "label": "Duration",
+          "description": "The duration of the event",
+          "defaultTags": [
+            "Calculation",
+            "Duration"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:eveningNight#event",
+          "id": "eveningNight#event",
+          "channelTypeUID": "astro:rangeEvent",
+          "kind": "TRIGGER",
+          "label": "Range Event",
+          "description": "Range event",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:midnight#start",
+          "id": "midnight#start",
+          "channelTypeUID": "astro:start",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Start Time",
+          "description": "The start time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:midnight#end",
+          "id": "midnight#end",
+          "channelTypeUID": "astro:end",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "End Time",
+          "description": "The end time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:midnight#duration",
+          "id": "midnight#duration",
+          "channelTypeUID": "astro:duration",
+          "itemType": "Number:Time",
+          "kind": "STATE",
+          "label": "Duration",
+          "description": "The duration of the event",
+          "defaultTags": [
+            "Calculation",
+            "Duration"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:midnight#event",
+          "id": "midnight#event",
+          "channelTypeUID": "astro:rangeEvent",
+          "kind": "TRIGGER",
+          "label": "Range Event",
+          "description": "Range event",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:daylight#start",
+          "id": "daylight#start",
+          "channelTypeUID": "astro:start",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Start Time",
+          "description": "The start time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:daylight#end",
+          "id": "daylight#end",
+          "channelTypeUID": "astro:end",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "End Time",
+          "description": "The end time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:daylight#duration",
+          "id": "daylight#duration",
+          "channelTypeUID": "astro:duration",
+          "itemType": "Number:Time",
+          "kind": "STATE",
+          "label": "Duration",
+          "description": "The duration of the event",
+          "defaultTags": [
+            "Calculation",
+            "Duration"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:daylight#event",
+          "id": "daylight#event",
+          "channelTypeUID": "astro:rangeEvent",
+          "kind": "TRIGGER",
+          "label": "Range Event",
+          "description": "Range event",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:position#azimuth",
+          "id": "position#azimuth",
+          "channelTypeUID": "astro:azimuth",
+          "itemType": "Number:Angle",
+          "kind": "STATE",
+          "label": "Azimuth",
+          "description": "The azimuth of the planet",
+          "defaultTags": [
+            "Calculation"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:position#elevation",
+          "id": "position#elevation",
+          "channelTypeUID": "astro:elevation",
+          "itemType": "Number:Angle",
+          "kind": "STATE",
+          "label": "Elevation",
+          "description": "The elevation of the planet",
+          "defaultTags": [
+            "Calculation"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:position#shadeLength",
+          "id": "position#shadeLength",
+          "channelTypeUID": "astro:shadeLength",
+          "itemType": "Number",
+          "kind": "STATE",
+          "label": "Shade Length Ratio",
+          "description": "Projected shade length ratio (derived from Elevation)",
+          "defaultTags": [
+            "Calculation"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:radiation#direct",
+          "id": "radiation#direct",
+          "channelTypeUID": "astro:directRadiation",
+          "itemType": "Number:Intensity",
+          "kind": "STATE",
+          "label": "Direct Radiation",
+          "description": "Level of radiation after penetration of the atmospheric layer",
+          "defaultTags": [
+            "Calculation",
+            "Level"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:radiation#diffuse",
+          "id": "radiation#diffuse",
+          "channelTypeUID": "astro:diffuseRadiation",
+          "itemType": "Number:Intensity",
+          "kind": "STATE",
+          "label": "Diffuse Radiation",
+          "description": "Level of radiation diffracted by clouds and atmosphere",
+          "defaultTags": [
+            "Calculation",
+            "Level"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:radiation#total",
+          "id": "radiation#total",
+          "channelTypeUID": "astro:totalRadiation",
+          "itemType": "Number:Intensity",
+          "kind": "STATE",
+          "label": "Total Radiation",
+          "description": "Total quantity of radiation on the ground",
+          "defaultTags": [
+            "Calculation"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:zodiac#start",
+          "id": "zodiac#start",
+          "channelTypeUID": "astro:start",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Start Time",
+          "description": "The start time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:zodiac#end",
+          "id": "zodiac#end",
+          "channelTypeUID": "astro:end",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "End Time",
+          "description": "The end time of the event",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:zodiac#sign",
+          "id": "zodiac#sign",
+          "channelTypeUID": "astro:sign",
+          "itemType": "String",
+          "kind": "STATE",
+          "label": "Sign",
+          "description": "The sign of the zodiac",
+          "defaultTags": [
+            "Info",
+            "Status"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:season#name",
+          "id": "season#name",
+          "channelTypeUID": "astro:seasonName",
+          "itemType": "String",
+          "kind": "STATE",
+          "label": "Season Name",
+          "description": "The name of the current season",
+          "defaultTags": [
+            "Info",
+            "Status"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:season#spring",
+          "id": "season#spring",
+          "channelTypeUID": "astro:spring",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Spring",
+          "description": "The beginning of spring",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:season#summer",
+          "id": "season#summer",
+          "channelTypeUID": "astro:summer",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Summer",
+          "description": "The beginning of summer",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:season#autumn",
+          "id": "season#autumn",
+          "channelTypeUID": "astro:autumn",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Autumn",
+          "description": "The beginning of autumn",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:season#winter",
+          "id": "season#winter",
+          "channelTypeUID": "astro:winter",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Winter",
+          "description": "The beginning of winter",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:season#nextName",
+          "id": "season#nextName",
+          "channelTypeUID": "astro:seasonName",
+          "itemType": "String",
+          "kind": "STATE",
+          "label": "Next Season",
+          "description": "The name of the next season",
+          "defaultTags": [
+            "Info",
+            "Status"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:season#timeLeft",
+          "id": "season#timeLeft",
+          "channelTypeUID": "astro:duration",
+          "itemType": "Number:Time",
+          "kind": "STATE",
+          "label": "Time Left",
+          "description": "The time remaining before season change",
+          "defaultTags": [
+            "Calculation",
+            "Duration"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:eclipse#total",
+          "id": "eclipse#total",
+          "channelTypeUID": "astro:total",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Total Eclipse",
+          "description": "The DateTime of the next total eclipse",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:eclipse#totalElevation",
+          "id": "eclipse#totalElevation",
+          "channelTypeUID": "astro:elevation",
+          "itemType": "Number:Angle",
+          "kind": "STATE",
+          "label": "Elevation",
+          "description": "The elevation of the planet",
+          "defaultTags": [
+            "Calculation"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:eclipse#partial",
+          "id": "eclipse#partial",
+          "channelTypeUID": "astro:partial",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Partial Eclipse",
+          "description": "The DateTime of the next partial eclipse",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:eclipse#partialElevation",
+          "id": "eclipse#partialElevation",
+          "channelTypeUID": "astro:elevation",
+          "itemType": "Number:Angle",
+          "kind": "STATE",
+          "label": "Elevation",
+          "description": "The elevation of the planet",
+          "defaultTags": [
+            "Calculation"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:eclipse#ring",
+          "id": "eclipse#ring",
+          "channelTypeUID": "astro:ring",
+          "itemType": "DateTime",
+          "kind": "STATE",
+          "label": "Ring Eclipse",
+          "description": "The DateTime of the next ring eclipse",
+          "defaultTags": [
+            "Calculation",
+            "Timestamp"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:eclipse#ringElevation",
+          "id": "eclipse#ringElevation",
+          "channelTypeUID": "astro:elevation",
+          "itemType": "Number:Angle",
+          "kind": "STATE",
+          "label": "Elevation",
+          "description": "The elevation of the planet",
+          "defaultTags": [
+            "Calculation"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:eclipse#event",
+          "id": "eclipse#event",
+          "channelTypeUID": "astro:sunEclipseEvent",
+          "kind": "TRIGGER",
+          "label": "Sun Eclipse Event",
+          "description": "Sun eclipse event",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "forceEvent": false,
+            "offset": 0
+          }
+        },
+        {
+          "uid": "astro:sun:local:phase#name",
+          "id": "phase#name",
+          "channelTypeUID": "astro:sunPhaseName",
+          "itemType": "String",
+          "kind": "STATE",
+          "label": "Sun Phase Name",
+          "description": "The name of the current sun phase",
+          "defaultTags": [
+            "Info",
+            "Status"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:circadian#brightness",
+          "id": "circadian#brightness",
+          "channelTypeUID": "system:brightness",
+          "itemType": "Dimmer",
+          "kind": "STATE",
+          "label": "Brightness",
+          "description": "Controls the brightness and switches the light on and off",
+          "defaultTags": [
+            "Brightness",
+            "Control"
+          ],
+          "properties": {},
+          "configuration": {}
+        },
+        {
+          "uid": "astro:sun:local:circadian#temperature",
+          "id": "circadian#temperature",
+          "channelTypeUID": "system:color-temperature-abs",
+          "itemType": "Number:Temperature",
+          "kind": "STATE",
+          "label": "Color Temperature",
+          "description": "Controls the color temperature of the light in Kelvin",
+          "defaultTags": [
+            "ColorTemperature",
+            "Control"
+          ],
+          "properties": {},
+          "configuration": {}
+        }
+      ],
+      "label": "Local Sun",
+      "configuration": {
+        "geolocation": "21.053879,105.735820",
+        "interval": 300,
+        "useMeteorologicalSeason": false
+      },
+      "properties": {
+        "thingTypeVersion": "2"
+      },
+      "UID": "astro:sun:local",
+      "thingTypeUID": "astro:sun",
+      "semanticEquipmentTag": "Application"
+    }
+  },
+  "mqtt:broker:5eb5e76419": {
+    "class": "org.openhab.core.thing.internal.ThingStorageEntity",
+    "value": {
+      "isBridge": true,
+      "channels": [],
+      "label": "MQTT Broker",
+      "configuration": {
+        "birthRetain": true,
+        "certificatepin": true,
+        "clientid": "37273356-c135-480a-bd53-a79d1e0943f2",
+        "enableDiscovery": true,
+        "host": "raspin3.local",
+        "hostnameValidated": true,
+        "keepAlive": 60,
+        "lwtQos": 0,
+        "lwtRetain": true,
+        "mqttVersion": "V3",
+        "password": "pi",
+        "port": 1883,
+        "protocol": "TCP",
+        "publickeypin": true,
+        "qos": 0,
+        "reconnectTime": 60000,
+        "secure": false,
+        "shutdownRetain": true,
+        "username": "pi"
+      },
+      "properties": {},
+      "UID": "mqtt:broker:5eb5e76419",
+      "thingTypeUID": "mqtt:broker"
+    }
+  },
+  "mqtt:broker:c9ec6b11f9": {
+    "class": "org.openhab.core.thing.internal.ThingStorageEntity",
+    "value": {
+      "isBridge": true,
+      "channels": [],
+      "label": "MQTT Broker",
+      "configuration": {
+        "birthRetain": true,
+        "certificatepin": true,
+        "clientid": "18f907f9-e765-4ae1-9791-f29574ba2eb8",
+        "enableDiscovery": true,
+        "host": "127.0.01",
+        "hostnameValidated": true,
+        "keepAlive": 60,
+        "lwtQos": 0,
+        "lwtRetain": true,
+        "mqttVersion": "V3",
+        "protocol": "TCP",
+        "publickeypin": true,
+        "qos": 0,
+        "reconnectTime": 60000,
+        "secure": false,
+        "shutdownRetain": true
+      },
+      "properties": {},
+      "UID": "mqtt:broker:c9ec6b11f9",
+      "thingTypeUID": "mqtt:broker"
+    }
+  },
+  "mqtt:topic:c9ec6b11f9:2b75d6c987": {
+    "class": "org.openhab.core.thing.internal.ThingStorageEntity",
+    "value": {
+      "isBridge": false,
+      "channels": [
+        {
+          "uid": "mqtt:topic:c9ec6b11f9:2b75d6c987:nhiet_do",
+          "id": "nhiet_do",
+          "channelTypeUID": "mqtt:number",
+          "itemType": "Number",
+          "kind": "STATE",
+          "label": "nhiet do",
+          "description": "",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "stateTopic": "esp32/phongkhach/nhietdo"
+          }
+        }
+      ],
+      "label": "nhiet do",
+      "bridgeUID": "mqtt:broker:c9ec6b11f9",
+      "configuration": {},
+      "properties": {},
+      "UID": "mqtt:topic:c9ec6b11f9:2b75d6c987",
+      "thingTypeUID": "mqtt:topic"
+    }
+  },
+  "mqtt:topic:c9ec6b11f9:965707a924": {
+    "class": "org.openhab.core.thing.internal.ThingStorageEntity",
+    "value": {
+      "isBridge": false,
+      "channels": [
+        {
+          "uid": "mqtt:topic:c9ec6b11f9:965707a924:temperature",
+          "id": "temperature",
+          "channelTypeUID": "mqtt:number",
+          "itemType": "Number",
+          "kind": "STATE",
+          "label": "Nhiệt độ",
+          "description": "",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "stateTopic": "home/esp32/sensors",
+            "transformationPattern": [
+              "JSONPATH:$.temp"
+            ]
+          }
+        },
+        {
+          "uid": "mqtt:topic:c9ec6b11f9:965707a924:humidity",
+          "id": "humidity",
+          "channelTypeUID": "mqtt:number",
+          "itemType": "Number",
+          "kind": "STATE",
+          "label": "Độ ẩm",
+          "description": "",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "stateTopic": "home/esp32/sensors",
+            "transformationPattern": [
+              "JSONPATH:$.humi"
+            ]
+          }
+        },
+        {
+          "uid": "mqtt:topic:c9ec6b11f9:965707a924:pir_sensor",
+          "id": "pir_sensor",
+          "channelTypeUID": "mqtt:switch",
+          "itemType": "Switch",
+          "kind": "STATE",
+          "label": "Cảm biến chuyển động",
+          "description": "",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "stateTopic": "home/esp32/sensors",
+            "transformationPattern": [
+              "JSONPATH:$.pir"
+            ]
+          }
+        },
+        {
+          "uid": "mqtt:topic:c9ec6b11f9:965707a924:distance_sensor",
+          "id": "distance_sensor",
+          "channelTypeUID": "mqtt:number",
+          "itemType": "Number",
+          "kind": "STATE",
+          "label": "Đo khoảng cách",
+          "description": "",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "stateTopic": "home/esp32/sensors",
+            "transformationPattern": [
+              "JSONPATH:$.distance"
+            ]
+          }
+        },
+        {
+          "uid": "mqtt:topic:c9ec6b11f9:965707a924:light_sensor",
+          "id": "light_sensor",
+          "channelTypeUID": "mqtt:number",
+          "itemType": "Number",
+          "kind": "STATE",
+          "label": "Ánh sáng",
+          "description": "",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "stateTopic": "home/esp32/sensors",
+            "transformationPattern": [
+              "JSONPATH:$.light"
+            ]
+          }
+        },
+        {
+          "uid": "mqtt:topic:c9ec6b11f9:965707a924:relay_light",
+          "id": "relay_light",
+          "channelTypeUID": "mqtt:dimmer",
+          "itemType": "Dimmer",
+          "kind": "STATE",
+          "label": "Đèn LED",
+          "description": "",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "commandTopic": "home/esp32/relay_light"
+          }
+        },
+        {
+          "uid": "mqtt:topic:c9ec6b11f9:965707a924:led_bedroom",
+          "id": "led_bedroom",
+          "channelTypeUID": "mqtt:dimmer",
+          "itemType": "Dimmer",
+          "kind": "STATE",
+          "label": "Đèn LED phòng ngủ",
+          "description": "",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "commandTopic": "home/esp32/relay_light_bedroom"
+          }
+        },
+        {
+          "uid": "mqtt:topic:c9ec6b11f9:965707a924:door",
+          "id": "door",
+          "channelTypeUID": "mqtt:switch",
+          "itemType": "Switch",
+          "kind": "STATE",
+          "label": "Cua Tu Dong",
+          "description": "",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "commandTopic": "home/door",
+            "off": "CLOSE",
+            "on": "OPEN"
+          }
+        },
+        {
+          "uid": "mqtt:topic:c9ec6b11f9:965707a924:heater",
+          "id": "heater",
+          "channelTypeUID": "mqtt:switch",
+          "itemType": "Switch",
+          "kind": "STATE",
+          "label": "Bình nóng lạnh",
+          "description": "",
+          "defaultTags": [],
+          "properties": {},
+          "configuration": {
+            "commandTopic": "home/esp32/heater",
+            "off": "OFF",
+            "on": "ON"
+          }
+        }
+      ],
+      "label": "ESP32",
+      "bridgeUID": "mqtt:broker:c9ec6b11f9",
+      "configuration": {},
+      "properties": {},
+      "UID": "mqtt:topic:c9ec6b11f9:965707a924",
+      "thingTypeUID": "mqtt:topic"
+    }
+  }
+}

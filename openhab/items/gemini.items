@@ -1,0 +1,2 @@
+String GeminiChat "Gemini Chat" { channel="gemini:account:myaccount:chat" }
+

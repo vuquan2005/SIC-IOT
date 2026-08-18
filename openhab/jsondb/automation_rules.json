@@ -1,0 +1,256 @@
+{
+  "108f4e85fd": {
+    "class": "org.openhab.core.automation.dto.RuleDTO",
+    "value": {
+      "triggers": [
+        {
+          "id": "1",
+          "configuration": {
+            "cronExpression": "0 0 17 * * ?"
+          },
+          "type": "timer.GenericCronTrigger"
+        }
+      ],
+      "conditions": [],
+      "actions": [
+        {
+          "inputs": {},
+          "id": "2",
+          "configuration": {
+            "script": "var flag \u003d items.getItem(\u0027Flag_Khong_Bat_Binh\u0027).state;\nif (flag !\u003d\u003d \u0027ON\u0027) {\n  items.getItem(\u0027ESP32_Binh_Nong_Lanh\u0027).sendCommand(\u0027ON\u0027);\n  console.log(\u002717h: Bật bình nóng lạnh.\u0027);\n} else {\n  console.log(\u002717h: Bỏ qua do nhiệt độ 15h \u003e 35°C.\u0027);\n}",
+            "type": "application/javascript"
+          },
+          "type": "script.ScriptAction"
+        }
+      ],
+      "configuration": {},
+      "configDescriptions": [],
+      "templateState": "no-template",
+      "uid": "108f4e85fd",
+      "name": "Bật bình nóng lạnh 17h",
+      "tags": [],
+      "visibility": "VISIBLE"
+    }
+  },
+  "116595c9ef": {
+    "class": "org.openhab.core.automation.dto.RuleDTO",
+    "value": {
+      "triggers": [
+        {
+          "id": "1",
+          "configuration": {
+            "cronExpression": "0 0 */2 * * ?"
+          },
+          "type": "timer.GenericCronTrigger"
+        },
+        {
+          "id": "3",
+          "configuration": {
+            "startlevel": 100.0
+          },
+          "type": "core.SystemStartlevelTrigger"
+        }
+      ],
+      "conditions": [],
+      "actions": [
+        {
+          "inputs": {},
+          "id": "2",
+          "configuration": {
+            "script": "var ZonedDateTime \u003d Java.type(\"java.time.ZonedDateTime\"); var now \u003d ZonedDateTime.now(); var hour \u003d now.getHour(); var minute \u003d now.getMinute(); var currentMinutes \u003d hour * 60 + minute;\nvar time17h \u003d 17 * 60;  var time24h \u003d 24 * 60;  var time6h  \u003d 6 * 60;  \nvar targetBrightness \u003d null;\nif (currentMinutes \u003e\u003d time17h \u0026\u0026 currentMinutes \u003c time24h) {\n  targetBrightness \u003d 100;\n} else if (currentMinutes \u003e\u003d 0 \u0026\u0026 currentMinutes \u003c time6h) {\n  targetBrightness \u003d 50;\n} else {\n  var ambientState \u003d items.getItem(\u0027Cam_Bien_Anh_Sang\u0027).state;\n  if (ambientState !\u003d \u0027NULL\u0027 \u0026\u0026 ambientState !\u003d \u0027UNDEF\u0027) {\n    var ambient \u003d Number(ambientState);\n    if (ambient \u003c 100) {\n      targetBrightness \u003d 100;\n    } else {\n      targetBrightness \u003d 0;\n    }\n  }\n}\nif (targetBrightness !\u003d\u003d null) {\n  items.getItem(\u0027ESP32_Den_LED\u0027).sendCommand(targetBrightness);\n}\n",
+            "type": "application/javascript"
+          },
+          "type": "script.ScriptAction"
+        }
+      ],
+      "configuration": {},
+      "configDescriptions": [],
+      "templateState": "no-template",
+      "uid": "116595c9ef",
+      "name": "Dieu khien den theo thoi gian",
+      "tags": [],
+      "visibility": "VISIBLE"
+    }
+  },
+  "36072f598c": {
+    "class": "org.openhab.core.automation.dto.RuleDTO",
+    "value": {
+      "triggers": [
+        {
+          "id": "1",
+          "configuration": {
+            "cronExpression": "0 0 19 * * ?"
+          },
+          "type": "timer.GenericCronTrigger"
+        }
+      ],
+      "conditions": [],
+      "actions": [
+        {
+          "inputs": {},
+          "id": "2",
+          "configuration": {
+            "script": "",
+            "type": "application/javascript"
+          },
+          "type": "script.ScriptAction"
+        }
+      ],
+      "configuration": {},
+      "configDescriptions": [],
+      "templateState": "no-template",
+      "uid": "36072f598c",
+      "name": "Tắt bình nóng lạnh 19h",
+      "tags": [],
+      "visibility": "VISIBLE"
+    }
+  },
+  "7798254d9d": {
+    "class": "org.openhab.core.automation.dto.RuleDTO",
+    "value": {
+      "triggers": [
+        {
+          "id": "1",
+          "configuration": {
+            "cronExpression": "0 0 15 * * ?"
+          },
+          "type": "timer.GenericCronTrigger"
+        }
+      ],
+      "conditions": [],
+      "actions": [
+        {
+          "inputs": {},
+          "id": "2",
+          "configuration": {
+            "script": "var temp \u003d items.getItem(\u0027Nhiet_Do\u0027).state;\nif (parseFloat(temp) \u003e 35) {\n  items.getItem(\u0027Flag_Khong_Bat_Binh\u0027).sendCommand(\u0027ON\u0027);\n  console.log(\u0027Nhiệt độ 15h \u003e 35°C -\u003e Đã bật cờ hủy.\u0027);\n} else {\n  items.getItem(\u0027Flag_Khong_Bat_Binh\u0027).sendCommand(\u0027OFF\u0027);\n  console.log(\u0027Nhiệt độ 15h \u003c\u003d 35°C -\u003e Cho phép bật lúc 17h.\u0027);\n}",
+            "type": "application/javascript"
+          },
+          "type": "script.ScriptAction"
+        }
+      ],
+      "configuration": {},
+      "configDescriptions": [],
+      "templateState": "no-template",
+      "uid": "7798254d9d",
+      "name": "Kiểm tra nhiệt độ 15h",
+      "tags": [],
+      "visibility": "VISIBLE"
+    }
+  },
+  "87146fe898": {
+    "class": "org.openhab.core.automation.dto.RuleDTO",
+    "value": {
+      "triggers": [
+        {
+          "id": "3",
+          "configuration": {
+            "cronExpression": "0 0 * * * ?"
+          },
+          "type": "timer.GenericCronTrigger"
+        },
+        {
+          "id": "1",
+          "configuration": {
+            "time": "19:00"
+          },
+          "type": "timer.TimeOfDayTrigger"
+        },
+        {
+          "id": "4",
+          "configuration": {
+            "startlevel": 100.0
+          },
+          "type": "core.SystemStartlevelTrigger"
+        }
+      ],
+      "conditions": [],
+      "actions": [
+        {
+          "inputs": {},
+          "id": "2",
+          "configuration": {
+            "script": "var Z \u003d Java.type(\"java.time.ZonedDateTime\").now().getHour();\nvar item \u003d items.getItem(\u0027ESP32_Den_LED_phong_ngu\u0027);\n\nif (Z \u003e\u003d 19 \u0026\u0026 Z \u003c 23) {\n    // Luôn gửi mức 70% trong khung giờ từ 19h - 23h\n    item.sendCommand(70); \n} else {\n    // Hết khung giờ thì tắt hẳn\n    item.sendCommand(\u0027OFF\u0027);\n}",
+            "type": "application/javascript"
+          },
+          "type": "script.ScriptAction"
+        }
+      ],
+      "configuration": {},
+      "configDescriptions": [],
+      "templateState": "no-template",
+      "uid": "87146fe898",
+      "name": "Dieu khien den phong ngu theo gio",
+      "tags": [],
+      "visibility": "VISIBLE"
+    }
+  },
+  "a47bb1121c": {
+    "class": "org.openhab.core.automation.dto.RuleDTO",
+    "value": {
+      "triggers": [
+        {
+          "id": "0",
+          "configuration": {
+            "itemName": "ESP32_Den_LED",
+            "state": "ON"
+          },
+          "type": "core.ItemStateChangeTrigger"
+        }
+      ],
+      "conditions": [],
+      "actions": [
+        {
+          "inputs": {},
+          "id": "script",
+          "configuration": {
+            "script": "say(\"Cửa chính đã được mở!\")\n",
+            "type": "application/vnd.openhab.dsl.rule"
+          },
+          "type": "script.ScriptAction"
+        }
+      ],
+      "configuration": {},
+      "configDescriptions": [],
+      "templateState": "no-template",
+      "uid": "a47bb1121c",
+      "name": "Thong bao bat led",
+      "tags": [],
+      "visibility": "VISIBLE"
+    }
+  },
+  "dcb059b53b": {
+    "class": "org.openhab.core.automation.dto.RuleDTO",
+    "value": {
+      "triggers": [
+        {
+          "id": "1",
+          "configuration": {
+            "itemName": "Cam_Bien_CHuyen_Dong",
+            "state": "ON"
+          },
+          "type": "core.ItemStateUpdateTrigger"
+        }
+      ],
+      "conditions": [],
+      "actions": [
+        {
+          "inputs": {},
+          "id": "2",
+          "configuration": {
+            "script": "items.getItem(\u0027ESP32_Cua_Tu_Dong\u0027).sendCommand(\u0027ON\u0027);\n\nsetTimeout(() \u003d\u003e {\n  items.getItem(\u0027ESP32_Cua_Tu_Dong\u0027).sendCommand(\u0027OFF\u0027);\n}, 10000);",
+            "type": "application/javascript"
+          },
+          "type": "script.ScriptAction"
+        }
+      ],
+      "configuration": {},
+      "configDescriptions": [],
+      "templateState": "no-template",
+      "uid": "dcb059b53b",
+      "name": "Tự động mở cửa khi có người",
+      "tags": [],
+      "visibility": "VISIBLE"
+    }
+  }
+}

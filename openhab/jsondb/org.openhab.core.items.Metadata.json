@@ -1,0 +1,50 @@
+{
+  "persistence:Do_Am": {
+    "class": "org.openhab.core.items.Metadata",
+    "value": {
+      "key": {
+        "segments": [
+          "persistence",
+          "Do_Am"
+        ],
+        "uid": "persistence:Do_Am"
+      },
+      "value": "",
+      "configuration": {
+        "strategy": "everyChange, everyMinute"
+      }
+    }
+  },
+  "persistence:Nhiet_Do": {
+    "class": "org.openhab.core.items.Metadata",
+    "value": {
+      "key": {
+        "segments": [
+          "persistence",
+          "Nhiet_Do"
+        ],
+        "uid": "persistence:Nhiet_Do"
+      },
+      "value": "",
+      "configuration": {
+        "strategy": "everyChange, everyMinute"
+      }
+    }
+  },
+  "stateDescription:ESP32_Den_LED": {
+    "class": "org.openhab.core.items.Metadata",
+    "value": {
+      "key": {
+        "segments": [
+          "stateDescription",
+          "ESP32_Den_LED"
+        ],
+        "uid": "stateDescription:ESP32_Den_LED"
+      },
+      "value": "",
+      "configuration": {
+        "pattern": "%.0f %%"
+      }
+    }
+  }
+}

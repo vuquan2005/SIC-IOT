@@ -1,0 +1,95 @@
+// ====================================================================
+// OpenHAB Automation Rules (DSL & Automation Logic Reference)
+// ====================================================================
+
+// 1. Tự động mở cửa khi phát hiện chuyển động (đóng lại sau 10s)
+rule "Tự động mở cửa khi có người"
+when
+    Item Cam_Bien_CHuyen_Dong received update ON
+then
+    ESP32_Cua_Tu_Dong.sendCommand(ON)
+    createTimer(now.plusSeconds(10), [ |
+        ESP32_Cua_Tu_Dong.sendCommand(OFF)
+    ])
+end
+
+// 2. Điều khiển đèn phòng ngủ theo khung giờ (19h - 23h: 70%, ngoài giờ: OFF)
+rule "Dieu khien den phong ngu theo gio"
+when
+    Time cron "0 0 * * * ?" or
+    Time is 19:00 or
+    System reached startlevel 100
+then
+    val hour = now.getHour()
+    if (hour >= 19 && hour < 23) {
+        ESP32_Den_LED_phong_ngu.sendCommand(70)
+    } else {
+        ESP32_Den_LED_phong_ngu.sendCommand(OFF)
+    }
+end
+
+// 3. Điều khiển đèn phòng khách theo thời gian và ánh sáng môi trường
+rule "Dieu khien den theo thoi gian"
+when
+    Time cron "0 0 */2 * * ?" or
+    System reached startlevel 100
+then
+    val currentMinutes = now.getHour() * 60 + now.getMinute()
+    val time17h = 17 * 60
+    val time24h = 24 * 60
+    val time6h  = 6 * 60
+
+    if (currentMinutes >= time17h && currentMinutes < time24h) {
+        ESP32_Den_LED.sendCommand(100)
+    } else if (currentMinutes >= 0 && currentMinutes < time6h) {
+        ESP32_Den_LED.sendCommand(50)
+    } else {
+        if (Cam_Bien_Anh_Sang.state != NULL && Cam_Bien_Anh_Sang.state != UNDEF) {
+            val ambient = (Cam_Bien_Anh_Sang.state as Number).intValue
+            if (ambient < 100) {
+                ESP32_Den_LED.sendCommand(100)
+            } else {
+                ESP32_Den_LED.sendCommand(0)
+            }
+        }
+    }
+end
+
+// 4. Kiểm tra nhiệt độ lúc 15h (Nếu > 35°C thì bật cờ không bật bình nóng lạnh)
+rule "Kiểm tra nhiệt độ 15h"
+when
+    Time cron "0 0 15 * * ?"
+then
+    if (Nhiet_Do.state != NULL && Nhiet_Do.state != UNDEF) {
+        val temp = (Nhiet_Do.state as Number).doubleValue
+        if (temp > 35.0) {
+            Flag_Khong_Bat_Binh.sendCommand(ON)
+            logInfo("Automation", "Nhiệt độ 15h > 35°C -> Đã bật cờ hủy bật bình.")
+        } else {
+            Flag_Khong_Bat_Binh.sendCommand(OFF)
+            logInfo("Automation", "Nhiệt độ 15h <= 35°C -> Cho phép bật bình lúc 17h.")
+        }
+    }
+end
+
+// 5. Bật bình nóng lạnh lúc 17h (nếu không có cờ hủy do trời nóng)
+rule "Bật bình nóng lạnh 17h"
+when
+    Time cron "0 0 17 * * ?"
+then
+    if (Flag_Khong_Bat_Binh.state != ON) {
+        ESP32_Binh_nong_lanh.sendCommand(ON)
+        logInfo("Automation", "17h: Bật bình nóng lạnh.")
+    } else {
+        logInfo("Automation", "17h: Bỏ qua bật bình nóng lạnh do nhiệt độ 15h > 35°C.")
+    }
+end
+
+// 6. Tắt bình nóng lạnh lúc 19h
+rule "Tắt bình nóng lạnh 19h"
+when
+    Time cron "0 0 19 * * ?"
+then
+    ESP32_Binh_nong_lanh.sendCommand(OFF)
+    logInfo("Automation", "19h: Đã tắt bình nóng lạnh.")
+end
