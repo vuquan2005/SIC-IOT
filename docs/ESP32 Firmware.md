@@ -6,17 +6,23 @@ ESP32 đóng vai trò là bộ điều khiển trung tâm (Microcontroller Unit 
 
 Sơ đồ mô tả luồng hoạt động phần cứng của node IoT:
 
-```
-              ESP32 (MCU)
-        ┌──────────┼──────────┐
-        ▼          ▼          ▼
-    Sensors      MQTT     Actuators
-    (Cảm biến) (Truyền thông) (Chấp hành)
-        │          │          │
-        └──────────┼──────────┘
-                   ▼
-             Device State
-         (Đồng bộ trạng thái)
+```mermaid
+graph TD
+    %% Nodes
+    MCU["ESP32 MCU"]
+    Sensors["Sensors <br> (Cảm biến)"]
+    MQTT["MQTT <br> (Truyền thông)"]
+    Actuators["Actuators <br> (Chấp hành)"]
+    State["Device State <br> (Đồng bộ trạng thái)"]
+
+    %% Links
+    MCU --> Sensors
+    MCU --> MQTT
+    MCU --> Actuators
+    
+    Sensors -.-> State
+    MQTT <--> State
+    Actuators -.-> State
 ```
 
 **Các nhiệm vụ chính của ESP32:**
@@ -34,37 +40,26 @@ Firmware được viết bằng ngôn ngữ Arduino C++ dựa trên mô hình h�
 
 Chu trình hoạt động của hệ thống được biểu diễn qua lưu đồ sau:
 
-```
-[Khởi tạo (Initialization)]
-          │
-          ▼
-[Kết nối Wi-Fi (WiFiManager)]
-          │
-          ▼
-[Kết nối MQTT (Non-blocking)]
-          │
-          ▼
-┌───► [Đọc Cảm biến (Sensors)]
-│         │
-│         ▼
-│     [Gửi dữ liệu (Publish JSON)]
-│         │
-│         ▼
-│     [Nhận Lệnh điều khiển (MQTT Callback)]
-│         │
-│         ▼
-│     [Điều khiển Thiết bị (Control Actuator)]
-│         │
-│         ▼
-│     [Cập nhật trạng thái (Update State)]
-│         │
-└─────────┘ (Lặp lại tuần hoàn)
+```mermaid
+flowchart TD
+    Init["Khởi tạo <br> (Initialization)"] --> WiFi["Kết nối Wi-Fi <br> (WiFiManager)"]
+    WiFi --> MQTT["Kết nối MQTT <br> (Non-blocking)"]
+    
+    subgraph Loop ["Vòng lặp tuần hoàn (Main Loop)"]
+        MQTT --> Sensors["Đọc Cảm biến <br> (Sensors)"]
+        Sensors --> Publish["Gửi dữ liệu <br> (Publish JSON)"]
+        Publish --> Callback["Nhận Lệnh điều khiển <br> (MQTT Callback)"]
+        Callback --> Control["Điều khiển Thiết bị <br> (Control Actuator)"]
+        Control --> State["Cập nhật trạng thái <br> (Update State)"]
+    end
+    
+    State --> Sensors
 ```
 
 ### Cơ chế kết nối lại (Reconnect) và xử lý lỗi đáng chú ý:
 *   **Kết nối lại MQTT không chặn dòng (Non-blocking Reconnect):** Thay vì sử dụng vòng lặp `while(!client.connected())` làm nghẽn toàn bộ hoạt động của chip khi mất mạng, firmware sử dụng bộ đếm thời gian `millis()` để thử lại sau mỗi 5 giây. Thiết bị vẫn tiếp tục đọc cảm biến và hiển thị LCD cục bộ bình thường trong thời gian mất mạng.
-*   **Cơ chế chống treo khi mất cảm biến (Sensor Timeout):** Đối với cảm biến siêu âm, hàm `pulseIn()` được thiết lập giới hạn thời gian chờ (timeout) là $30.000\ \mu s$. Nếu cảm biến bị đứt dây hoặc hỏng, hệ thống sẽ trả về lỗi `-1` và đi tiếp thay vì bị treo cứng CPU.
-*   **Bộ lọc nhiễu tín hiệu (LDR Moving Average Filter):** Sử dụng bộ lọc trung bình trượt (kích thước $N=5$) để làm mịn dữ liệu ánh sáng đọc từ chân Analog, tránh gây nhiễu lệnh logic điều khiển bật/tắt đèn ở cổng openHAB.
+*   **Cơ chế chống treo khi mất cảm biến (Sensor Timeout):** Đối với cảm biến siêu âm, hàm `pulseIn()` được thiết lập giới hạn thời gian chờ (timeout) là `30.000 µs`. Nếu cảm biến bị đứt dây hoặc hỏng, hệ thống sẽ trả về lỗi `-1` và đi tiếp thay vì bị treo cứng CPU.
+*   **Bộ lọc nhiễu tín hiệu (LDR Moving Average Filter):** Sử dụng bộ lọc trung bình trượt (kích thước `N = 5`) để làm mịn dữ liệu ánh sáng đọc từ chân Analog, tránh gây nhiễu lệnh logic điều khiển bật/tắt đèn ở cổng openHAB.
 
 ---
 
@@ -72,6 +67,8 @@ Chu trình hoạt động của hệ thống được biểu diễn qua lưu đ�
 
 ### 3.1. Xử lý nhận lệnh và phản hồi trạng thái qua MQTT
 Khi có lệnh từ server gửi xuống, hàm callback sẽ phân tích và chuyển đến đúng thiết bị đích, sau đó gửi trả ngay trạng thái thực tế lên MQTT Broker để đồng bộ:
+
+Xem chi tiết trong: [SmartHomeNode.cpp](../firmware/SmartHomeNode.cpp#L53)
 
 ```cpp
 void SmartHomeNode::handleMqttMessage(String topic, String payload) {
@@ -103,6 +100,8 @@ void SmartHomeNode::handleMqttMessage(String topic, String payload) {
 
 ### 3.2. Đóng gói dữ liệu cảm biến định dạng JSON gửi định kỳ
 Các cảm biến được đọc đồng thời và đóng gói chung vào một gói tin JSON để tối ưu hóa số lượng kết nối mạng:
+
+Xem chi tiết trong: [esp32_openhab.ino](../firmware/esp32_openhab.ino#L125)
 
 ```cpp
 // Trích xuất từ hàm loop() chính

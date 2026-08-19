@@ -11,25 +11,25 @@ Luồng truyền thông tin và điều khiển trong hệ thống được vậ
 ```mermaid
 graph TD
     %% Thiết bị phần cứng
-    ESP32[ESP32 Smart IoT Node] <-->|MQTT: JSON Sensors & Commands| Broker[MQTT Broker: Mosquitto]
+    ESP32["ESP32 Smart IoT Node"] <-->|MQTT: JSON Sensors & Commands| Broker["MQTT Broker: Mosquitto"]
     
     %% OpenHAB trung tâm
-    Broker <-->|MQTT Binding| OpenHAB[OpenHAB Core]
-    OpenHAB <-->|Rules / Scripts| Items[OpenHAB Items]
+    Broker <-->|MQTT Binding| OpenHAB["OpenHAB Core"]
+    OpenHAB <-->|Rules / Scripts| Items["OpenHAB Items"]
     
     %% Trợ lý giọng nói
-    Mic[INMP441 Microphone] -->|I2S Audio| VoiceScript[Python Voice Assistant: wakeword.py]
-    VoiceScript -->|1. Offline Wake Word Detection| OWW[openWakeWord Engine]
-    VoiceScript -->|2. Speech-to-Text Audio| GeminiSTT[Gemini API: 3.5-Flash-Lite]
+    Mic["INMP441 Microphone"] -->|I2S Audio| VoiceScript["Python Voice Assistant: wakeword.py"]
+    VoiceScript -->|1. Offline Wake Word Detection| OWW["openWakeWord Engine"]
+    VoiceScript -->|2. Speech-to-Text Audio| GeminiSTT["Gemini API: 3.5-Flash-Lite"]
     GeminiSTT -->|3. Text Command| VoiceScript
     VoiceScript -->|4. REST API Voice Interpreter| OpenHAB
     
     %% Gemini HLI trong OpenHAB
-    OpenHAB <-->|Gemini Binding| GeminiHLI[Gemini 2.5-Flash HLI]
+    OpenHAB <-->|Gemini Binding| GeminiHLI["Gemini 2.5-Flash HLI"]
     
     %% Đầu ra giọng nói
     OpenHAB -->|5. Text Response| VoiceScript
-    VoiceScript -->|6. gTTS & ffplay| Speaker[Speaker / Bluetooth Speaker]
+    VoiceScript -->|6. gTTS & ffplay| Speaker["Speaker / Bluetooth Speaker"]
 ```
 
 ---
@@ -39,25 +39,25 @@ graph TD
 Cấu hình của OpenHAB được định nghĩa thông qua các tệp cấu hình dạng khai báo (declarative config files) đặt trong thư mục `openhab/`.
 
 ### 2.1. Cấu hình Thiết bị (Things - `/openhab/things/`)
-*   [mqtt.things](file:///D:/Development/SIC-IOT/openhab/things/mqtt.things):
+*   [mqtt.things](../openhab/things/mqtt.things):
     *   **MQTT Broker Bridge:** Kết nối tới MQTT Broker cục bộ (`127.0.0.1:1883`).
     *   **ESP32 Thing (`965707a924`):**
         *   **Cảm biến (State Channels):** Đọc chuỗi JSON từ topic `home/esp32/sensors`, sử dụng `JSONPATH` để tách thành các kênh: Nhiệt độ (`$.temp`), Độ ẩm (`$.humi`), Chuyển động (`$.pir`), Khoảng cách (`$.distance`), Ánh sáng (`$.light`).
         *   **Cơ cấu chấp hành (Command Channels):** Gửi lệnh điều khiển trực tiếp tới các topic `home/esp32/relay_light` (Đèn khách), `home/esp32/relay_light_bedroom` (Đèn ngủ), `home/door` (Cửa tự động), và `home/esp32/heater` (Bình nóng lạnh).
     *   **Astro Binding:** Cấu hình theo dõi chu kỳ mặt trời và mặt trăng tại vị trí địa lý của hệ thống.
-*   [gemini.things](file:///D:/Development/SIC-IOT/openhab/things/gemini.things):
+*   [gemini.things](../openhab/things/gemini.things):
     *   Tích hợp Gemini AI (`gemini-2.5-flash`) thông qua kênh `chat`.
     *   **System Prompt:** Giới hạn vai trò của Gemini chỉ điều khiển hoặc trả lời về các thiết bị có sẵn trong hệ thống (Đèn LED, Cửa, Bình nóng lạnh, Cảm biến nhiệt độ/độ ẩm/ánh sáng/chuyển động/khoảng cách) và cấm tự bịa ra các thiết bị không tồn tại (TV, Rèm cửa, Điều hòa, Quạt).
 
 ### 2.2. Định nghĩa Items (`/openhab/items/`)
-*   [home.items](file:///D:/Development/SIC-IOT/openhab/items/home.items): Gắn các kênh (channels) của Thing với các Item trong OpenHAB để hiển thị lên UI và áp dụng logic.
+*   [home.items](../openhab/items/home.items): Gắn các kênh (channels) của Thing với các Item trong OpenHAB để hiển thị lên UI và áp dụng logic.
     *   *Cảm biến:* `Nhiet_Do`, `Do_Am`, `Cam_Bien_CHuyen_Dong`, `Cam_Bien_Anh_Sang`, `Cam_Bien_Khoang_Cach`.
     *   *Điều khiển:* `ESP32_Den_LED` (Dimmer), `ESP32_Den_LED_phong_ngu` (Dimmer), `ESP32_Cua_Tu_Dong` (Switch), `ESP32_Binh_nong_lanh` (Switch).
     *   *Biến cờ logic:* `Flag_Khong_Bat_Binh` (Dùng để bỏ qua việc bật bình nóng lạnh tự động nếu trời nóng).
-*   [gemini.items](file:///D:/Development/SIC-IOT/openhab/items/gemini.items): Định nghĩa `GeminiChat` kết nối với kênh chat của Gemini để lưu trữ nội dung đối thoại và phản hồi.
+*   [gemini.items](../openhab/items/gemini.items): Định nghĩa `GeminiChat` kết nối với kênh chat của Gemini để lưu trữ nội dung đối thoại và phản hồi.
 
 ### 2.3. Sơ đồ giao diện (Sitemaps - `/openhab/sitemaps/`)
-*   [default.sitemap](file:///D:/Development/SIC-IOT/openhab/sitemaps/default.sitemap): Tạo giao diện điều khiển (Basic UI/App) trực quan được chia làm 5 vùng chức năng chính:
+*   [default.sitemap](../openhab/sitemaps/default.sitemap): Tạo giao diện điều khiển (Basic UI/App) trực quan được chia làm 5 vùng chức năng chính:
     1.  **Phòng Khách:** Điều khiển độ sáng đèn và xem nhiệt độ/độ ẩm.
     2.  **Phòng Ngủ:** Điều khiển độ sáng đèn và đóng/mở cửa phòng ngủ.
     3.  **Nhà Vệ Sinh:** Bật/tắt bình nóng lạnh và hiển thị trạng thái cờ hủy tự động.
@@ -68,7 +68,7 @@ Cấu hình của OpenHAB được định nghĩa thông qua các tệp cấu h�
 
 ## 3. Kịch bản Tự động hóa (Automation Rules - `/openhab/rules/`)
 
-Các kịch bản được viết bằng ngôn ngữ OpenHAB Rules DSL trong tệp [automation.rules](file:///D:/Development/SIC-IOT/openhab/rules/automation.rules):
+Các kịch bản được viết bằng ngôn ngữ OpenHAB Rules DSL trong tệp [automation.rules](../openhab/rules/automation.rules):
 
 1.  **Mở cửa tự động:** Khi phát hiện chuyển động (`Cam_Bien_CHuyen_Dong` chuyển sang `ON`), cửa tự động mở (`ESP32_Cua_Tu_Dong` gửi lệnh `ON`) và tự động đóng lại sau 10 giây thông qua hàm `createTimer`.
 2.  **Đèn phòng ngủ theo giờ:** Tự động điều khiển độ sáng của đèn ngủ ở mức 70% trong khung giờ từ 19:00 đến 23:00 hàng ngày, ngoài thời gian này sẽ tắt.
@@ -85,7 +85,7 @@ Các kịch bản được viết bằng ngôn ngữ OpenHAB Rules DSL trong t�
 
 ## 4. Tích hợp Trợ lý Giọng nói Offline (Voice Assistant & Gemini)
 
-Cơ chế điều khiển bằng giọng nói tiếng Việt được thực hiện bởi script Python [wakeword.py](file:///D:/Development/SIC-IOT/python/wakeword.py) chạy độc lập trên máy chủ điều khiển (ví dụ: Raspberry Pi):
+Cơ chế điều khiển bằng giọng nói tiếng Việt được thực hiện bởi script Python [wakeword.py](../python/wakeword.py) chạy độc lập trên máy chủ điều khiển (ví dụ: Raspberry Pi):
 
 1.  **Phát hiện từ khóa gọi (Wake Word):** Lắng nghe dữ liệu âm thanh từ Microphone I2S (INMP441). Sử dụng thư viện `openwakeword` để phát hiện các từ khóa *"Alexa"* hoặc *"Hey Jarvis"* trực tiếp ngoại tuyến (offline) trên chip mà không cần gửi dữ liệu liên tục lên cloud.
 2.  **Nhận dạng giọng nói (Speech-To-Text - STT):** Sau khi kích hoạt bởi từ khóa, hệ thống sẽ thu âm câu lệnh trong vòng 5 giây tiếp theo, hạ tần số lấy mẫu xuống 16kHz, chuyển đổi base64 và gửi lên mô hình `gemini-3.5-flash-lite` để nhận dạng chính xác nội dung văn bản tiếng Việt của câu lệnh.
